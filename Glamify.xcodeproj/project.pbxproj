@@ -1,0 +1,427 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C50A22851A3FCC050086872D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C50A22841A3FCC050086872D /* main.m */; };
+		C50A22881A3FCC050086872D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C50A22871A3FCC050086872D /* AppDelegate.m */; };
+		C50A228B1A3FCC050086872D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C50A228A1A3FCC050086872D /* ViewController.m */; };
+		C50A228E1A3FCC050086872D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C50A228C1A3FCC050086872D /* Main.storyboard */; };
+		C50A22901A3FCC050086872D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C50A228F1A3FCC050086872D /* Images.xcassets */; };
+		C50A22931A3FCC050086872D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C50A22911A3FCC050086872D /* LaunchScreen.xib */; };
+		C50A229F1A3FCC050086872D /* GlamifyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C50A229E1A3FCC050086872D /* GlamifyTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C50A22991A3FCC050086872D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C50A22771A3FCC050086872D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C50A227E1A3FCC050086872D;
+			remoteInfo = Glamify;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C50A227F1A3FCC050086872D /* Glamify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Glamify.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C50A22831A3FCC050086872D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C50A22841A3FCC050086872D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C50A22861A3FCC050086872D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C50A22871A3FCC050086872D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C50A22891A3FCC050086872D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		C50A228A1A3FCC050086872D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C50A228D1A3FCC050086872D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C50A228F1A3FCC050086872D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C50A22921A3FCC050086872D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		C50A22981A3FCC050086872D /* GlamifyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GlamifyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C50A229D1A3FCC050086872D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C50A229E1A3FCC050086872D /* GlamifyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlamifyTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C50A227C1A3FCC050086872D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C50A22951A3FCC050086872D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C50A22761A3FCC050086872D = {
+			isa = PBXGroup;
+			children = (
+				C50A22811A3FCC050086872D /* Glamify */,
+				C50A229B1A3FCC050086872D /* GlamifyTests */,
+				C50A22801A3FCC050086872D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C50A22801A3FCC050086872D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C50A227F1A3FCC050086872D /* Glamify.app */,
+				C50A22981A3FCC050086872D /* GlamifyTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C50A22811A3FCC050086872D /* Glamify */ = {
+			isa = PBXGroup;
+			children = (
+				C50A22861A3FCC050086872D /* AppDelegate.h */,
+				C50A22871A3FCC050086872D /* AppDelegate.m */,
+				C50A22891A3FCC050086872D /* ViewController.h */,
+				C50A228A1A3FCC050086872D /* ViewController.m */,
+				C50A228C1A3FCC050086872D /* Main.storyboard */,
+				C50A228F1A3FCC050086872D /* Images.xcassets */,
+				C50A22911A3FCC050086872D /* LaunchScreen.xib */,
+				C50A22821A3FCC050086872D /* Supporting Files */,
+			);
+			path = Glamify;
+			sourceTree = "<group>";
+		};
+		C50A22821A3FCC050086872D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C50A22831A3FCC050086872D /* Info.plist */,
+				C50A22841A3FCC050086872D /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C50A229B1A3FCC050086872D /* GlamifyTests */ = {
+			isa = PBXGroup;
+			children = (
+				C50A229E1A3FCC050086872D /* GlamifyTests.m */,
+				C50A229C1A3FCC050086872D /* Supporting Files */,
+			);
+			path = GlamifyTests;
+			sourceTree = "<group>";
+		};
+		C50A229C1A3FCC050086872D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C50A229D1A3FCC050086872D /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C50A227E1A3FCC050086872D /* Glamify */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C50A22A21A3FCC050086872D /* Build configuration list for PBXNativeTarget "Glamify" */;
+			buildPhases = (
+				C50A227B1A3FCC050086872D /* Sources */,
+				C50A227C1A3FCC050086872D /* Frameworks */,
+				C50A227D1A3FCC050086872D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Glamify;
+			productName = Glamify;
+			productReference = C50A227F1A3FCC050086872D /* Glamify.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C50A22971A3FCC050086872D /* GlamifyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C50A22A51A3FCC050086872D /* Build configuration list for PBXNativeTarget "GlamifyTests" */;
+			buildPhases = (
+				C50A22941A3FCC050086872D /* Sources */,
+				C50A22951A3FCC050086872D /* Frameworks */,
+				C50A22961A3FCC050086872D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C50A229A1A3FCC050086872D /* PBXTargetDependency */,
+			);
+			name = GlamifyTests;
+			productName = GlamifyTests;
+			productReference = C50A22981A3FCC050086872D /* GlamifyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C50A22771A3FCC050086872D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Brandon Shega";
+				TargetAttributes = {
+					C50A227E1A3FCC050086872D = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					C50A22971A3FCC050086872D = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = C50A227E1A3FCC050086872D;
+					};
+				};
+			};
+			buildConfigurationList = C50A227A1A3FCC050086872D /* Build configuration list for PBXProject "Glamify" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C50A22761A3FCC050086872D;
+			productRefGroup = C50A22801A3FCC050086872D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C50A227E1A3FCC050086872D /* Glamify */,
+				C50A22971A3FCC050086872D /* GlamifyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C50A227D1A3FCC050086872D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C50A228E1A3FCC050086872D /* Main.storyboard in Resources */,
+				C50A22931A3FCC050086872D /* LaunchScreen.xib in Resources */,
+				C50A22901A3FCC050086872D /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C50A22961A3FCC050086872D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C50A227B1A3FCC050086872D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C50A228B1A3FCC050086872D /* ViewController.m in Sources */,
+				C50A22881A3FCC050086872D /* AppDelegate.m in Sources */,
+				C50A22851A3FCC050086872D /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C50A22941A3FCC050086872D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C50A229F1A3FCC050086872D /* GlamifyTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C50A229A1A3FCC050086872D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C50A227E1A3FCC050086872D /* Glamify */;
+			targetProxy = C50A22991A3FCC050086872D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C50A228C1A3FCC050086872D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C50A228D1A3FCC050086872D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C50A22911A3FCC050086872D /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C50A22921A3FCC050086872D /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C50A22A01A3FCC050086872D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C50A22A11A3FCC050086872D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C50A22A31A3FCC050086872D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Glamify/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C50A22A41A3FCC050086872D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Glamify/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		C50A22A61A3FCC050086872D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = GlamifyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Glamify.app/Glamify";
+			};
+			name = Debug;
+		};
+		C50A22A71A3FCC050086872D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = GlamifyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Glamify.app/Glamify";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C50A227A1A3FCC050086872D /* Build configuration list for PBXProject "Glamify" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C50A22A01A3FCC050086872D /* Debug */,
+				C50A22A11A3FCC050086872D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C50A22A21A3FCC050086872D /* Build configuration list for PBXNativeTarget "Glamify" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C50A22A31A3FCC050086872D /* Debug */,
+				C50A22A41A3FCC050086872D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C50A22A51A3FCC050086872D /* Build configuration list for PBXNativeTarget "GlamifyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C50A22A61A3FCC050086872D /* Debug */,
+				C50A22A71A3FCC050086872D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C50A22771A3FCC050086872D /* Project object */;
+}
