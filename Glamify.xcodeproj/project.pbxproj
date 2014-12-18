@@ -13,6 +13,8 @@
 		C50A22901A3FCC050086872D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C50A228F1A3FCC050086872D /* Images.xcassets */; };
 		C50A22931A3FCC050086872D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C50A22911A3FCC050086872D /* LaunchScreen.xib */; };
 		C50A229F1A3FCC050086872D /* GlamifyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C50A229E1A3FCC050086872D /* GlamifyTests.m */; };
+		C56B64AC1A4356A1008CA2D4 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C56B64AB1A4356A1008CA2D4 /* SignUpViewController.m */; };
+		C56B64B21A437B3A008CA2D4 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C56B64B11A437B3A008CA2D4 /* MainViewController.m */; };
 		C59605191A41226000900245 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C59605181A41226000900245 /* background.jpg */; };
 		C596051D1A4123AF00900245 /* glamifylogo.png in Resources */ = {isa = PBXBuildFile; fileRef = C596051C1A4123AF00900245 /* glamifylogo.png */; };
 		C59605201A412D5000900245 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596051F1A412D5000900245 /* LoginViewController.m */; };
@@ -42,6 +44,10 @@
 		C50A22981A3FCC050086872D /* GlamifyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GlamifyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C50A229D1A3FCC050086872D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C50A229E1A3FCC050086872D /* GlamifyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlamifyTests.m; sourceTree = "<group>"; };
+		C56B64AA1A4356A1008CA2D4 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		C56B64AB1A4356A1008CA2D4 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		C56B64B01A437B3A008CA2D4 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		C56B64B11A437B3A008CA2D4 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		C59605181A41226000900245 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
 		C596051C1A4123AF00900245 /* glamifylogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glamifylogo.png; sourceTree = "<group>"; };
 		C596051E1A412D5000900245 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -104,6 +110,10 @@
 				C596051F1A412D5000900245 /* LoginViewController.m */,
 				C59605241A41361B00900245 /* CustomButton.h */,
 				C59605251A41361B00900245 /* CustomButton.m */,
+				C56B64AA1A4356A1008CA2D4 /* SignUpViewController.h */,
+				C56B64AB1A4356A1008CA2D4 /* SignUpViewController.m */,
+				C56B64B01A437B3A008CA2D4 /* MainViewController.h */,
+				C56B64B11A437B3A008CA2D4 /* MainViewController.m */,
 			);
 			path = Glamify;
 			sourceTree = "<group>";
@@ -247,7 +257,9 @@
 			files = (
 				C50A22881A3FCC050086872D /* AppDelegate.m in Sources */,
 				C59605261A41361B00900245 /* CustomButton.m in Sources */,
+				C56B64AC1A4356A1008CA2D4 /* SignUpViewController.m in Sources */,
 				C50A22851A3FCC050086872D /* main.m in Sources */,
+				C56B64B21A437B3A008CA2D4 /* MainViewController.m in Sources */,
 				C59605231A41360300900245 /* StyleKit.m in Sources */,
 				C59605201A412D5000900245 /* LoginViewController.m in Sources */,
 			);

@@ -1,21 +1,18 @@
 //
-//  LoginViewController.m
+//  SignUpViewController.m
 //  Glamify
 //
-//  Created by Brandon Shega on 12/16/14.
+//  Created by Brandon Shega on 12/18/14.
 //  Copyright (c) 2014 Brandon Shega. All rights reserved.
 //
 
-#import "LoginViewController.h"
-#import "MainViewController.h"
+#import "SignUpViewController.h"
 
-@interface LoginViewController ()
+@interface SignUpViewController ()
 
 @end
 
-@implementation LoginViewController
-
-@synthesize userText, passwordText;
+@implementation SignUpViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,19 +34,4 @@
 }
 */
 
-- (IBAction)loginButton:(id)sender
-{
-    
-    NSString *username = [userText text];
-    NSString *password = [passwordText text];
-    
-    if ([username  isEqual: @"test"] && [password  isEqual: @"test"]) {
-        
-        MainViewController *mvc = [[MainViewController alloc] init];
-        
-        
-        
-    }
-    
-}
 @end
