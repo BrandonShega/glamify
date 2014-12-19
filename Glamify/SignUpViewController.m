@@ -14,6 +14,8 @@
 
 @implementation SignUpViewController
 
+@synthesize usernameText, passwordText, verifyPasswordText;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -34,4 +36,44 @@
 }
 */
 
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    
+    if ([username isEqualToString:@"test"] && [password isEqualToString:@"test"] && [verifyPassword isEqualToString:@"test"]) {
+        
+        return YES;
+        
+    } else {
+        
+        return NO;
+        
+    }
+    
+}
+
+- (IBAction)signupButton:(id)sender
+{
+    
+    username = [usernameText text];
+    password = [passwordText text];
+    verifyPassword = [verifyPasswordText text];
+    
+    if ([username isEqualToString:@""] && [password isEqualToString:@""] && [verifyPassword isEqualToString:@""]) {
+        
+        [[[UIAlertView alloc] initWithTitle:@"Error"
+                                    message:@"Please enter valid credentials"
+                                    delegate:nil
+                                    cancelButtonTitle:@"OK"
+                                    otherButtonTitles:nil] show];
+        
+    }
+    
+}
+
+- (IBAction)cancelSignup:(id)sender
+{
+    
+    [self dismissViewControllerAnimated:TRUE completion:nil];
+    
+}
 @end

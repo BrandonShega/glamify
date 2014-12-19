@@ -9,10 +9,17 @@
 #import <UIKit/UIKit.h>
 
 @interface LoginViewController : UIViewController
+{
+    
+    NSString *username;
+    NSString *password;
+    
+}
 
 @property (weak, nonatomic) IBOutlet UITextField *userText;
 @property (weak, nonatomic) IBOutlet UITextField *passwordText;
 
 - (IBAction)loginButton:(id)sender;
+- (IBAction)unwindSignupViewController:(UIStoryboardSegue *)unwindSegue;
 
 @end

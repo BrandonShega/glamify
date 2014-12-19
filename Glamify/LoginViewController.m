@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "MainViewController.h"
+#import "SignUpViewController.h"
 
 @interface LoginViewController ()
 
@@ -27,6 +28,22 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
+    
+    self.navigationController.navigationBarHidden = YES;
+    
+    NSLog(@"%@", username);
+    
+    if (username != NULL && password != NULL) {
+        
+        [self performSegueWithIdentifier:@"loginSegue" sender:self];
+        
+    }
+    
+}
+
 /*
 #pragma mark - Navigation
 
@@ -37,17 +54,37 @@
 }
 */
 
+- (IBAction)unwindSignupViewController:(UIStoryboardSegue *)unwindSegue
+{
+    
+    if ([unwindSegue.sourceViewController isKindOfClass:[SignUpViewController class]]) {
+        
+        SignUpViewController *svc = unwindSegue.sourceViewController;
+        
+        username = svc.usernameText.text;
+        password = svc.passwordText.text;
+        
+    }
+    
+}
+
 - (IBAction)loginButton:(id)sender
 {
     
-    NSString *username = [userText text];
-    NSString *password = [passwordText text];
+    username = [userText text];
+    password = [passwordText text];
     
-    if ([username  isEqual: @"test"] && [password  isEqual: @"test"]) {
+    if ([username isEqualToString:@"test"] && [password isEqualToString:@"test"]) {
         
-        MainViewController *mvc = [[MainViewController alloc] init];
+        [self performSegueWithIdentifier:@"loginSegue" sender:self];
         
+    } else {
         
+        [[[UIAlertView alloc] initWithTitle:@"Error"
+                                    message:@"Please enter valid credentials"
+                                   delegate:nil
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles:nil] show];
         
     }
     
