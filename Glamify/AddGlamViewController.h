@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface AddGlamViewController : UIViewController <UIImagePickerControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 {
@@ -14,6 +15,8 @@
 }
 
 - (IBAction)addProductButton:(id)sender;
+- (IBAction)saveGlamButton:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextField *glamNameText;
 
 @property (weak, nonatomic) IBOutlet UITableView *productTableView;
 

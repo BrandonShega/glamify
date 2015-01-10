@@ -9,6 +9,7 @@
 #import "AddGlamViewController.h"
 #import "AddProductViewController.h"
 #import "Product.h"
+#import "Glam.h"
 
 @interface AddGlamViewController () <ProductDelegate>
 
@@ -16,7 +17,7 @@
 
 @implementation AddGlamViewController
 
-@synthesize productTableView;
+@synthesize productTableView, glamNameText;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -105,6 +106,7 @@
 }
 */
 
+//Open modal for user to add a product to glam
 - (IBAction)addProductButton:(id)sender
 {
     
@@ -115,6 +117,21 @@
     pvc.delegate = self;
     
     [self presentViewController:pvc animated:YES completion:nil];
+    
+}
+
+//Create new glam object and then save to database
+- (IBAction)saveGlamButton:(id)sender
+{
+    
+    Glam *newGlam = [[Glam alloc] init];
+    PFUser *currentUser = [PFUser currentUser];
+    
+    newGlam.name = [glamNameText text];
+    newGlam.user = currentUser;
+    newGlam.products = productArray;
+    
+    [newGlam saveGlam];
     
 }
 @end

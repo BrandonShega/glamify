@@ -260,8 +260,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Glam Detail" id="5bR-ug-UlS"/>
+                    <navigationItem key="navigationItem" title="Add Glam Detail" id="5bR-ug-UlS">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="RIP-kd-R0Q">
+                            <connections>
+                                <action selector="saveGlamButton:" destination="oW4-fw-mx4" id="urJ-dV-I1J"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="glamNameText" destination="lRc-If-hgz" id="kvi-qP-TOZ"/>
                         <outlet property="productTableView" destination="Ogr-Dc-AxN" id="30Z-H2-H0L"/>
                     </connections>
                 </viewController>

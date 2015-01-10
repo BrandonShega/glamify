@@ -10,6 +10,13 @@
 
 @implementation Glam
 
+@synthesize user, name, category, comments, products;
 
+- (void)saveGlam
+{
+    
+    
+    
+}
 
 @end

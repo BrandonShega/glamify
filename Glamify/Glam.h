@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Parse/Parse.h>
 
 @interface Glam : NSObject
 {
@@ -15,11 +16,12 @@
     
 }
 
-@property (weak, nonatomic) NSString *user;
+@property (weak, nonatomic) PFUser *user;
 @property (weak, nonatomic) NSString *name;
 @property (weak, nonatomic) NSString *category;
 @property (weak, nonatomic) NSMutableArray *comments;
 @property (weak, nonatomic) NSMutableArray *products;
 
+- (void)saveGlam;
 
 @end
