@@ -8,6 +8,7 @@
 
 #import "AddGlamViewController.h"
 #import "AddProductViewController.h"
+#import "Product.h"
 
 @interface AddGlamViewController () <ProductDelegate>
 
@@ -15,11 +16,16 @@
 
 @implementation AddGlamViewController
 
+@synthesize productTableView;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     productArray = [[NSMutableArray alloc] init];
+    
+    [productTableView setDelegate:self];
+    [productTableView setDataSource:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,6 +50,7 @@
 {
     
     [super viewDidAppear:animated];
+
     
 //    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
 //    
@@ -52,6 +59,8 @@
 //    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
 //    
 //    [self presentViewController:picker animated:YES completion:nil];
+    
+    [productTableView reloadData];
     
 }
 
@@ -68,7 +77,21 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+    static NSString *cellIdentifier = @"Cell";
     
+    UITableViewCell *cell = [self.productTableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    
+    if (cell == nil) {
+        
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        
+    }
+    
+    Product *product = [productArray objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = product.name;
+    
+    return cell;
     
 }
 
