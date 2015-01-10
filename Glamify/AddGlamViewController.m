@@ -11,13 +11,13 @@
 #import "Product.h"
 #import "Glam.h"
 
-@interface AddGlamViewController () <ProductDelegate>
+@interface AddGlamViewController () <ProductDelegate, UIAlertViewDelegate>
 
 @end
 
 @implementation AddGlamViewController
 
-@synthesize productTableView, glamNameText;
+@synthesize productTableView, glamNameText, glamImage;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,6 +27,76 @@
     
     [productTableView setDelegate:self];
     [productTableView setDataSource:self];
+    
+}
+
+- (void)galleryImage
+{
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    
+    picker.delegate = self;
+    picker.allowsEditing = NO;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:picker animated:YES completion:nil];
+    
+}
+
+- (void)cameraImage
+{
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    
+    picker.delegate = self;
+    picker.allowsEditing = NO;
+    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    [self presentViewController:picker animated:YES completion:nil];
+    
+}
+
+- (void)chooseImage
+{
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Image Selector" message:@"How would you like to add an image?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
+    
+    [alert addButtonWithTitle:@"Camera"];
+    [alert addButtonWithTitle:@"Gallery"];
+    
+    [alert show];
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    switch (buttonIndex) {
+        case 1:
+            if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error!" message:@"There is no camera on this device" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [alert show];
+            } else {
+                [self cameraImage];
+            }
+            break;
+        case 2:
+            [self galleryImage];
+            break;
+        default:
+            break;
+    }
+    
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    
+    UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
+    [glamImage setImage:chosenImage forState:UIControlStateNormal];
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -51,15 +121,6 @@
 {
     
     [super viewDidAppear:animated];
-
-    
-//    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-//    
-//    picker.delegate = self;
-//    picker.allowsEditing = NO;
-//    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-//    
-//    [self presentViewController:picker animated:YES completion:nil];
     
     [productTableView reloadData];
     
@@ -126,12 +187,35 @@
     
     Glam *newGlam = [[Glam alloc] init];
     PFUser *currentUser = [PFUser currentUser];
+    UIImage *currentImage = [self.glamImage imageForState:UIControlStateNormal];
+    
+    NSData *imageData = UIImageJPEGRepresentation(currentImage, 0.05f);
     
     newGlam.name = [glamNameText text];
     newGlam.user = currentUser;
     newGlam.products = productArray;
+    newGlam.image = imageData;
     
     [newGlam saveGlam];
+    
+    glamNameText.text = @"";
+    [productArray removeAllObjects];
+    [productTableView reloadData];
+    UIImage *defaultImage = [UIImage imageNamed:@"imagepicker"];
+    [glamImage setImage:defaultImage forState:UIControlStateNormal];
+    [self.tabBarController setSelectedIndex:0];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success!" message:@"Glam saved successfully" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    
+    [alert show];
+    
+    
+}
+
+- (IBAction)addImageButton:(id)sender
+{
+    
+    [self chooseImage];
     
 }
 @end

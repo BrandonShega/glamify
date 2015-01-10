@@ -7,8 +7,9 @@
 //
 
 #import "ProfileViewController.h"
+#import "SettingsViewController.h"
 
-@interface ProfileViewController ()
+@interface ProfileViewController () <SettingsDelegte>
 
 @end
 
@@ -38,5 +39,11 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)userLoggedOut {
+    
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+}
 
 @end

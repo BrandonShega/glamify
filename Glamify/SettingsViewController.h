@@ -7,9 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
+
+@protocol SettingsDelegte <NSObject>
+
+- (void)userLoggedOut;
+
+@end
 
 @interface SettingsViewController : UIViewController
 
+@property (nonatomic, weak) id<SettingsDelegte> delegate;
+
 - (IBAction)settingsDone:(id)sender;
+
+
+- (IBAction)logoutButton:(id)sender;
 
 @end

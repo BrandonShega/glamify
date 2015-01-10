@@ -7,6 +7,7 @@
 //
 
 #import "SettingsViewController.h"
+#import "LoginViewController.h"
 
 @interface SettingsViewController ()
 
@@ -44,6 +45,15 @@
 {
     
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+- (IBAction)logoutButton:(id)sender
+{
+    
+    [PFUser logOut];
+    
+    [self.delegate userLoggedOut];
     
 }
 @end

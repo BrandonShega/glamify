@@ -16,8 +16,14 @@
 
 - (IBAction)addProductButton:(id)sender;
 - (IBAction)saveGlamButton:(id)sender;
-@property (weak, nonatomic) IBOutlet UITextField *glamNameText;
+- (IBAction)addImageButton:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UITextField *glamNameText;
 @property (weak, nonatomic) IBOutlet UITableView *productTableView;
+@property (weak, nonatomic) IBOutlet UIButton *glamImage;
+
+- (void)chooseImage;
+- (void)galleryImage;
+- (void)cameraImage;
 
 @end

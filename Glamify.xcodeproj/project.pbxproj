@@ -246,6 +246,7 @@
 		C55CC8C11A5F677100B4845F /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = C55CC8C01A5F677100B4845F /* Product.m */; };
 		C56B64AC1A4356A1008CA2D4 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C56B64AB1A4356A1008CA2D4 /* SignUpViewController.m */; };
 		C56B64B21A437B3A008CA2D4 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C56B64B11A437B3A008CA2D4 /* MainViewController.m */; };
+		C58859C81A617E5E00CF7346 /* imagepicker.png in Resources */ = {isa = PBXBuildFile; fileRef = C58859C71A617E5E00CF7346 /* imagepicker.png */; };
 		C59605191A41226000900245 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C59605181A41226000900245 /* background.jpg */; };
 		C596051D1A4123AF00900245 /* glamifylogo.png in Resources */ = {isa = PBXBuildFile; fileRef = C596051C1A4123AF00900245 /* glamifylogo.png */; };
 		C59605201A412D5000900245 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596051F1A412D5000900245 /* LoginViewController.m */; };
@@ -524,6 +525,7 @@
 		C56B64AB1A4356A1008CA2D4 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		C56B64B01A437B3A008CA2D4 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		C56B64B11A437B3A008CA2D4 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		C58859C71A617E5E00CF7346 /* imagepicker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imagepicker.png; sourceTree = "<group>"; };
 		C59605181A41226000900245 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
 		C596051C1A4123AF00900245 /* glamifylogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glamifylogo.png; sourceTree = "<group>"; };
 		C596051E1A412D5000900245 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -891,6 +893,7 @@
 		C59605171A41224A00900245 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				C58859C71A617E5E00CF7346 /* imagepicker.png */,
 				C507E8C51A43AD1900376C3F /* iconbeast lite 200 - png */,
 				C596051C1A4123AF00900245 /* glamifylogo.png */,
 				C59605181A41226000900245 /* background.jpg */,
@@ -1111,6 +1114,7 @@
 				C507E9F71A43AD1900376C3F /* layout-arrange-10-7.png in Resources */,
 				C507EA161A43AD1900376C3F /* paper-map-7.png in Resources */,
 				C507EA571A43B0C900376C3F /* renata.png in Resources */,
+				C58859C81A617E5E00CF7346 /* imagepicker.png in Resources */,
 				C507E9921A43AD1900376C3F /* animal-element-7.png in Resources */,
 				C507E9A91A43AD1900376C3F /* car-side-7.png in Resources */,
 				C507E99E1A43AD1900376C3F /* book-cover-tick-7.png in Resources */,

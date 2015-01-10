@@ -21,6 +21,7 @@
 @property (weak, nonatomic) NSString *category;
 @property (weak, nonatomic) NSMutableArray *comments;
 @property (weak, nonatomic) NSMutableArray *products;
+@property (weak, nonatomic) NSData *image;
 
 - (void)saveGlam;
 
