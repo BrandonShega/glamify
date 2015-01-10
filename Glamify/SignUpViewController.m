@@ -39,15 +39,36 @@
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
     
-    if ([username isEqualToString:@"test"] && [password isEqualToString:@"test"] && [verifyPassword isEqualToString:@"test"]) {
+    PFUser *user = [PFUser user];
+    
+    __block BOOL successful = NO;
+    
+    user.username = [usernameText text];
+    user.password = [verifyPasswordText text];
+    user.email = [usernameText text];
+    
+    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if(!error) {
+            
+            successful = succeeded;
+            
+        } else {
+            
+            NSString *errorString = [error userInfo][@"error"];
+            
+            [[[UIAlertView alloc] initWithTitle:@"Error"
+                                        message:errorString
+                                        delegate:nil
+                                        cancelButtonTitle:@"OK"
+                                        otherButtonTitles:nil] show];
+            
+            successful = succeeded;
+            
+        }
         
-        return YES;
-        
-    } else {
-        
-        return NO;
-        
-    }
+    }];
+    
+    return YES;
     
 }
 
@@ -58,7 +79,7 @@
     password = [passwordText text];
     verifyPassword = [verifyPasswordText text];
     
-    if ([username isEqualToString:@""] && [password isEqualToString:@""] && [verifyPassword isEqualToString:@""]) {
+    if ([username isEqualToString:@""] || [password isEqualToString:@""] || [verifyPassword isEqualToString:@""]) {
         
         [[[UIAlertView alloc] initWithTitle:@"Error"
                                     message:@"Please enter valid credentials"

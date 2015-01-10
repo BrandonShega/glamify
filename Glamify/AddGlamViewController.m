@@ -7,8 +7,9 @@
 //
 
 #import "AddGlamViewController.h"
+#import "AddProductViewController.h"
 
-@interface AddGlamViewController ()
+@interface AddGlamViewController () <ProductDelegate>
 
 @end
 
@@ -17,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    productArray = [[NSMutableArray alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,6 +32,13 @@
     return YES;
 }
 
+#pragma mark ProductDelegate
+- (void)productViewControllerDismissedwithProduct:(Product *)product
+{
+    
+    [productArray addObject:product];
+    
+}
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -45,6 +55,23 @@
     
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [productArray count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    
+    
+}
+
 /*
 #pragma mark - Navigation
 
@@ -55,4 +82,16 @@
 }
 */
 
+- (IBAction)addProductButton:(id)sender
+{
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    AddProductViewController *pvc = [storyboard instantiateViewControllerWithIdentifier:@"AddProductViewController"];
+    [pvc setModalPresentationStyle:UIModalPresentationFullScreen];
+    
+    pvc.delegate = self;
+    
+    [self presentViewController:pvc animated:YES completion:nil];
+    
+}
 @end

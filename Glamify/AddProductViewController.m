@@ -14,6 +14,8 @@
 
 @implementation AddProductViewController
 
+@synthesize delegate, productNameText, productURLText;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -42,7 +44,13 @@
 
 - (IBAction)doneProduct:(id)sender
 {
+
+    Product *newProduct = [[Product alloc] init];
     
+    newProduct.name = [productNameText text];
+    newProduct.productURL = [productURLText text];
+    
+    [self.delegate productViewControllerDismissedwithProduct:newProduct];
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }

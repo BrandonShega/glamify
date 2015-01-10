@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddGlamViewController : UIViewController <UIImagePickerControllerDelegate>
+@interface AddGlamViewController : UIViewController <UIImagePickerControllerDelegate, UITableViewDataSource, UITableViewDelegate>
+{
+    NSMutableArray *productArray;
+}
+
+- (IBAction)addProductButton:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UITableView *productTableView;
 
 @end

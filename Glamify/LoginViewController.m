@@ -34,9 +34,11 @@
     
     self.navigationController.navigationBarHidden = YES;
     
+    PFUser *user = [PFUser currentUser];
+    
     NSLog(@"%@", username);
     
-    if (username != NULL && password != NULL) {
+    if (user) {
         
         [self performSegueWithIdentifier:@"loginSegue" sender:self];
         
@@ -74,19 +76,23 @@
     username = [userText text];
     password = [passwordText text];
     
-    if ([username isEqualToString:@"test"] && [password isEqualToString:@"test"]) {
-        
-        [self performSegueWithIdentifier:@"loginSegue" sender:self];
-        
-    } else {
-        
-        [[[UIAlertView alloc] initWithTitle:@"Error"
-                                    message:@"Please enter valid credentials"
-                                   delegate:nil
-                          cancelButtonTitle:@"OK"
-                          otherButtonTitles:nil] show];
-        
-    }
+    [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser *user, NSError *error) {
+        if (user) {
+            
+            [self performSegueWithIdentifier:@"loginSegue" sender:self];
+            
+        } else {
+            
+            NSString *errorString = [error userInfo][@"error"];
+            
+            [[[UIAlertView alloc] initWithTitle:@"Error"
+                                        message:errorString
+                                       delegate:nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil] show];
+            
+        }
+    }];
     
 }
 @end
