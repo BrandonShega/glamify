@@ -32,17 +32,6 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    glamArray = [[NSMutableArray alloc] init];
-    
-    for (NSInteger i=0; i < 5; i++) {
-        
-        Glam *glam = [[Glam alloc] init];
-        
-        glam.name = @"Test Glam";
-        
-        [glamArray addObject:glam];
-        
-    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,7 +43,16 @@
 {
     [super viewDidAppear:animated];
     
+    PFQuery *followQuery = [PFQuery queryWithClassName:@"Activity"];
     
+    [followQuery whereKey:@"fromUser" equalTo:[PFUser currentUser]];
+    [followQuery whereKey:@"type" equalTo:@"follow"];
+    
+    PFQuery *glamQuery = [PFQuery queryWithClassName:@"Glam"];
+    
+    [glamQuery whereKey:@"user" matchesKey:@"fromUser" inQuery:followQuery];
+    
+    glamArray = [NSMutableArray arrayWithArray:[glamQuery findObjects]];
     
 }
 
@@ -85,9 +83,15 @@
     
     if (cell != nil) {
         
-        Glam *cellGlam = [glamArray objectAtIndex:indexPath.row];
+        PFObject *glam = [glamArray objectAtIndex:indexPath.row];
         
-        [cell setLabel:cellGlam.name];
+        NSString *glamName = [glam objectForKey:@"name"];
+        
+        PFFile *imageFile = [glam objectForKey:@"imageFile"];
+        NSData *imageData = [imageFile getData];
+        UIImage *glamImage = [UIImage imageWithData:imageData];
+        
+        [cell setLabel:glamName andImage:glamImage];
         
     }
     

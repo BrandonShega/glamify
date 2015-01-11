@@ -22,9 +22,11 @@
     // Configure the view for the selected state
 }
 
-- (void)setLabel:(NSString *)nameString
+- (void)setLabel:(NSString *)nameString andImage:(UIImage *)image
 {
     [glamName setText:nameString];
+    
+    [glamImage setImage:image];
 }
 
 @end

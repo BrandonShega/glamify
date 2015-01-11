@@ -14,6 +14,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *glamImage;
 @property (weak, nonatomic) NSString *glamNameString;
 
-- (void)setLabel:(NSString *)label;
+- (void)setLabel:(NSString *)label andImage:(UIImage *)image;
 
 @end

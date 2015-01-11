@@ -19,8 +19,11 @@
 
 @property (nonatomic, weak) id<SettingsDelegte> delegate;
 
+@property (weak, nonatomic) IBOutlet UITextField *nameText;
+
 - (IBAction)settingsDone:(id)sender;
 
+- (IBAction)saveButton:(id)sender;
 
 - (IBAction)logoutButton:(id)sender;
 

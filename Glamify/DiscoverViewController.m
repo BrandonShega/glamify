@@ -60,7 +60,7 @@
     
     //query.limit = 50;
     
-    //[query whereKey:@"user" notEqualTo:[PFUser currentUser]];
+    [query whereKey:@"user" notEqualTo:[PFUser currentUser]];
 //    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
 //        
 //        if (!error) {

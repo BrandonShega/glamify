@@ -15,6 +15,8 @@
 
 @implementation SettingsViewController
 
+@synthesize nameText;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -45,6 +47,16 @@
 {
     
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+- (IBAction)saveButton:(id)sender
+{
+    
+    PFObject *user = [PFUser currentUser];
+    
+    [user setObject:[nameText text] forKeyedSubscript:@"name"];
+    [user save];
     
 }
 

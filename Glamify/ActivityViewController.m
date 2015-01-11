@@ -12,8 +12,9 @@
 
 @interface ActivityViewController ()
 {
-    NSArray *statusArray;
+    
     NSMutableArray *activityArray;
+    
 }
 
 @end
@@ -29,19 +30,18 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    statusArray = [NSArray arrayWithObjects:@"Brandon followed you.", @"Sarah liked your Glam", @"Bethany commented on your Glam", @"Ashley followed you", @"Jessica followed you", @"Mary liked your Glam", @"You followed Susan", @"Kristen commented on your Glam", nil];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
     
-    activityArray = [[NSMutableArray alloc] init];
+    [super viewDidAppear:animated];
     
-    for (NSInteger i=0; i<[statusArray count]; i++) {
-        
-        Activity *activity = [[Activity alloc] init];
-        
-        activity.activityStatus = [statusArray objectAtIndex:i];
-        
-        [activityArray addObject:activity];
-        
-    }
+    PFQuery *query = [PFQuery queryWithClassName:@"Activity"];
+    [query whereKey:@"fromUser" notEqualTo:[PFUser currentUser]];
+    [query whereKey:@"toUser" equalTo:[PFUser currentUser]];
+    
+    activityArray = [NSMutableArray arrayWithArray:[query findObjects]];
     
 }
 
@@ -76,9 +76,33 @@
     
     if (cell != NULL) {
         
-        Activity *cellActivity = [activityArray objectAtIndex:indexPath.row];
+        PFObject *activity = [activityArray objectAtIndex:indexPath.row];
         
-        [cell setLabel:cellActivity.activityStatus];
+        PFUser *fromUser = [activity objectForKey:@"fromUser"];
+        PFUser *toUser = [activity objectForKey:@"toUser"];
+        
+        [fromUser fetchIfNeeded];
+        [toUser fetchIfNeeded];
+        
+        NSString *message;
+        
+        NSString *type = [activity objectForKey:@"type"];
+        
+        if ([type isEqual:@"follow"]) {
+            
+            message = [NSString stringWithFormat:@"%@ followed you!", [fromUser objectForKey:@"name"]];
+            
+        } else if ([type isEqual:@"like"]) {
+            
+            message = [NSString stringWithFormat:@"%@ liked your photo!", [fromUser objectForKey:@"name"]];
+            
+        } else if ([type isEqual:@"comment"]) {
+            
+            message = [NSString stringWithFormat:@"%@ commented on your photo!", [fromUser objectForKey:@"name"]];
+            
+        }
+        
+        [cell setLabel:message];
         
     }
     
