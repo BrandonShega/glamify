@@ -748,6 +748,24 @@
             </objects>
             <point key="canvasLocation" x="1545" y="-219"/>
         </scene>
+        <!--Discover Detail View Controller-->
+        <scene sceneID="QJs-dF-kNE">
+            <objects>
+                <viewController storyboardIdentifier="DiscoverDetail" id="xVE-cN-LLT" customClass="DiscoverDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CkD-gG-9Zj"/>
+                        <viewControllerLayoutGuide type="bottom" id="4wp-vp-OIn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6vl-E9-4fZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HAX-8p-Cgm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2027" y="1"/>
+        </scene>
     </scenes>
     <resources>
         <image name="background.jpg" width="1000" height="1000"/>

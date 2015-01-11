@@ -219,6 +219,7 @@
 		C507EA7E1A43DBB800376C3F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C507EA7D1A43DBB800376C3F /* ProfileViewController.m */; };
 		C507EA811A43DEBF00376C3F /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C507EA801A43DEBF00376C3F /* SettingsViewController.m */; };
 		C507EA841A43E25B00376C3F /* AddProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C507EA831A43E25B00376C3F /* AddProductViewController.m */; };
+		C50869F11A6208FC00C31885 /* DiscoverDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C50869F01A6208FC00C31885 /* DiscoverDetailViewController.m */; };
 		C50A22851A3FCC050086872D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C50A22841A3FCC050086872D /* main.m */; };
 		C50A22881A3FCC050086872D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C50A22871A3FCC050086872D /* AppDelegate.m */; };
 		C50A228E1A3FCC050086872D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C50A228C1A3FCC050086872D /* Main.storyboard */; };
@@ -489,6 +490,8 @@
 		C507EA801A43DEBF00376C3F /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		C507EA821A43E25B00376C3F /* AddProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddProductViewController.h; sourceTree = "<group>"; };
 		C507EA831A43E25B00376C3F /* AddProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddProductViewController.m; sourceTree = "<group>"; };
+		C50869EF1A6208FC00C31885 /* DiscoverDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverDetailViewController.h; sourceTree = "<group>"; };
+		C50869F01A6208FC00C31885 /* DiscoverDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverDetailViewController.m; sourceTree = "<group>"; };
 		C50A227F1A3FCC050086872D /* Glamify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Glamify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C50A22831A3FCC050086872D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C50A22841A3FCC050086872D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -860,6 +863,8 @@
 				C58859CA1A61ECF900CF7346 /* GlamButton.m */,
 				C58859CC1A61EEDA00CF7346 /* DiscoverViewController.h */,
 				C58859CD1A61EEDA00CF7346 /* DiscoverViewController.m */,
+				C50869EF1A6208FC00C31885 /* DiscoverDetailViewController.h */,
+				C50869F01A6208FC00C31885 /* DiscoverDetailViewController.m */,
 			);
 			path = Glamify;
 			sourceTree = "<group>";
@@ -1225,6 +1230,7 @@
 				C507EA7B1A43D19300376C3F /* DiscoverCell.m in Sources */,
 				C507EA7E1A43DBB800376C3F /* ProfileViewController.m in Sources */,
 				C50A22851A3FCC050086872D /* main.m in Sources */,
+				C50869F11A6208FC00C31885 /* DiscoverDetailViewController.m in Sources */,
 				C507EA841A43E25B00376C3F /* AddProductViewController.m in Sources */,
 				C507EA5D1A43B27000376C3F /* FeedViewControllerTableViewController.m in Sources */,
 				C507EA6C1A43C61100376C3F /* ActivityViewController.m in Sources */,

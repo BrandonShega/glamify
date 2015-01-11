@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "GlamButton.h"
 
 @interface DiscoverViewController : UIViewController
 
@@ -16,5 +17,7 @@
 - (void)loadGlams;
 
 - (void)loadImages:(NSArray *)images;
+
+- (void)imageClicked:(GlamButton *)sender;
 
 @end

@@ -8,7 +8,7 @@
 
 #import "DiscoverViewController.h"
 #import "Glam.h"
-#import "GlamButton.h"
+#import "DiscoverDetailViewController.h"
 
 @interface DiscoverViewController ()
 {
@@ -31,7 +31,7 @@
     // Do any additional setup after loading the view.
     
     
-    glamArray = [[NSMutableArray alloc] init];
+    //glamArray = [[NSMutableArray alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,23 +61,38 @@
     //query.limit = 50;
     
     //[query whereKey:@"user" notEqualTo:[PFUser currentUser]];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        
-        if (!error) {
-            
-            glamArray = [objects mutableCopy];
-            
-            NSLog(@"%@", objects);
-            
-        } else {
-            
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-            
-        }
-        
-    }];
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        
+//        if (!error) {
+//            
+//            glamArray = [objects mutableCopy];
+//            
+//            NSLog(@"%@", objects);
+//            
+//        } else {
+//            
+//            NSLog(@"Error: %@ %@", error, [error userInfo]);
+//            
+//        }
+//        
+//    }];
+    
+    glamArray = [NSMutableArray arrayWithArray:[query findObjects]];
     
     [self loadImages:glamArray];
+    
+}
+
+- (void)imageClicked:(GlamButton *)sender
+{
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    DiscoverDetailViewController *ddvc = [storyboard instantiateViewControllerWithIdentifier:@"DiscoverDetail"];
+    
+    ddvc.glamId = sender.glamid;
+    
+    [self presentViewController:ddvc animated:YES completion:nil];
     
 }
 
@@ -117,6 +132,8 @@
                 glamButton.frame = CGRectMake(IMAGE_WIDTH * (i % NUMBER_OF_COLUMNS) + PADDING * (i % NUMBER_OF_COLUMNS) + PADDING, IMAGE_HEIGHT * (i / NUMBER_OF_COLUMNS) + PADDING * (i / NUMBER_OF_COLUMNS) + PADDING, IMAGE_WIDTH, IMAGE_HEIGHT);
                 
                 glamButton.imageView.contentMode = UIViewContentModeScaleAspectFill;
+                
+                [glamButton addTarget:self action:@selector(imageClicked:) forControlEvents:UIControlEventTouchUpInside];
                 
                 [photoView addSubview:glamButton];
                 
