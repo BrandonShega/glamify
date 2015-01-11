@@ -10,4 +10,6 @@
 
 @interface ProfileViewController : UIViewController
 
+- (IBAction)settingsButton:(id)sender;
+
 @end

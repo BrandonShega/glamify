@@ -46,4 +46,15 @@
     
 }
 
+- (IBAction)settingsButton:(id)sender
+{
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    SettingsViewController *svc = [storyboard instantiateViewControllerWithIdentifier:@"Settings"];
+    
+    svc.delegate = self;
+    
+    [self presentViewController:svc animated:YES completion:nil];
+    
+}
 @end

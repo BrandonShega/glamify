@@ -18,6 +18,7 @@
 
 @property (weak, nonatomic) PFUser *user;
 @property (weak, nonatomic) NSString *name;
+@property (weak, nonatomic) NSString *glamId;
 @property (weak, nonatomic) NSString *category;
 @property (weak, nonatomic) NSMutableArray *comments;
 @property (weak, nonatomic) NSMutableArray *products;

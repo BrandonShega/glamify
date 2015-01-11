@@ -52,7 +52,7 @@
 {
     
     [PFUser logOut];
-    
+    [self dismissViewControllerAnimated:YES completion:nil];
     [self.delegate userLoggedOut];
     
 }

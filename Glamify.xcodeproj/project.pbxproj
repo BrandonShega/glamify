@@ -215,7 +215,6 @@
 		C507EA6C1A43C61100376C3F /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C507EA6B1A43C61100376C3F /* ActivityViewController.m */; };
 		C507EA6F1A43C62E00376C3F /* Activity.m in Sources */ = {isa = PBXBuildFile; fileRef = C507EA6E1A43C62E00376C3F /* Activity.m */; };
 		C507EA721A43CD0C00376C3F /* AddGlamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C507EA711A43CD0C00376C3F /* AddGlamViewController.m */; };
-		C507EA751A43D15700376C3F /* DiscoverCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C507EA741A43D15700376C3F /* DiscoverCollectionViewController.m */; };
 		C507EA7B1A43D19300376C3F /* DiscoverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C507EA7A1A43D19300376C3F /* DiscoverCell.m */; };
 		C507EA7E1A43DBB800376C3F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C507EA7D1A43DBB800376C3F /* ProfileViewController.m */; };
 		C507EA811A43DEBF00376C3F /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C507EA801A43DEBF00376C3F /* SettingsViewController.m */; };
@@ -247,6 +246,8 @@
 		C56B64AC1A4356A1008CA2D4 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C56B64AB1A4356A1008CA2D4 /* SignUpViewController.m */; };
 		C56B64B21A437B3A008CA2D4 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C56B64B11A437B3A008CA2D4 /* MainViewController.m */; };
 		C58859C81A617E5E00CF7346 /* imagepicker.png in Resources */ = {isa = PBXBuildFile; fileRef = C58859C71A617E5E00CF7346 /* imagepicker.png */; };
+		C58859CB1A61ECF900CF7346 /* GlamButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C58859CA1A61ECF900CF7346 /* GlamButton.m */; };
+		C58859CE1A61EEDA00CF7346 /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C58859CD1A61EEDA00CF7346 /* DiscoverViewController.m */; };
 		C59605191A41226000900245 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C59605181A41226000900245 /* background.jpg */; };
 		C596051D1A4123AF00900245 /* glamifylogo.png in Resources */ = {isa = PBXBuildFile; fileRef = C596051C1A4123AF00900245 /* glamifylogo.png */; };
 		C59605201A412D5000900245 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596051F1A412D5000900245 /* LoginViewController.m */; };
@@ -480,8 +481,6 @@
 		C507EA6E1A43C62E00376C3F /* Activity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Activity.m; sourceTree = "<group>"; };
 		C507EA701A43CD0C00376C3F /* AddGlamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGlamViewController.h; sourceTree = "<group>"; };
 		C507EA711A43CD0C00376C3F /* AddGlamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGlamViewController.m; sourceTree = "<group>"; };
-		C507EA731A43D15700376C3F /* DiscoverCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverCollectionViewController.h; sourceTree = "<group>"; };
-		C507EA741A43D15700376C3F /* DiscoverCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverCollectionViewController.m; sourceTree = "<group>"; };
 		C507EA791A43D19300376C3F /* DiscoverCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverCell.h; sourceTree = "<group>"; };
 		C507EA7A1A43D19300376C3F /* DiscoverCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverCell.m; sourceTree = "<group>"; };
 		C507EA7C1A43DBB800376C3F /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
@@ -526,6 +525,10 @@
 		C56B64B01A437B3A008CA2D4 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		C56B64B11A437B3A008CA2D4 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		C58859C71A617E5E00CF7346 /* imagepicker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imagepicker.png; sourceTree = "<group>"; };
+		C58859C91A61ECF900CF7346 /* GlamButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlamButton.h; sourceTree = "<group>"; };
+		C58859CA1A61ECF900CF7346 /* GlamButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlamButton.m; sourceTree = "<group>"; };
+		C58859CC1A61EEDA00CF7346 /* DiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
+		C58859CD1A61EEDA00CF7346 /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
 		C59605181A41226000900245 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
 		C596051C1A4123AF00900245 /* glamifylogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glamifylogo.png; sourceTree = "<group>"; };
 		C596051E1A412D5000900245 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -841,8 +844,6 @@
 				C507EA6E1A43C62E00376C3F /* Activity.m */,
 				C507EA701A43CD0C00376C3F /* AddGlamViewController.h */,
 				C507EA711A43CD0C00376C3F /* AddGlamViewController.m */,
-				C507EA731A43D15700376C3F /* DiscoverCollectionViewController.h */,
-				C507EA741A43D15700376C3F /* DiscoverCollectionViewController.m */,
 				C507EA791A43D19300376C3F /* DiscoverCell.h */,
 				C507EA7A1A43D19300376C3F /* DiscoverCell.m */,
 				C507EA7C1A43DBB800376C3F /* ProfileViewController.h */,
@@ -855,6 +856,10 @@
 				C543D3201A43E41600A27382 /* CommentViewController.m */,
 				C55CC8BF1A5F677100B4845F /* Product.h */,
 				C55CC8C01A5F677100B4845F /* Product.m */,
+				C58859C91A61ECF900CF7346 /* GlamButton.h */,
+				C58859CA1A61ECF900CF7346 /* GlamButton.m */,
+				C58859CC1A61EEDA00CF7346 /* DiscoverViewController.h */,
+				C58859CD1A61EEDA00CF7346 /* DiscoverViewController.m */,
 			);
 			path = Glamify;
 			sourceTree = "<group>";
@@ -1205,7 +1210,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C58859CB1A61ECF900CF7346 /* GlamButton.m in Sources */,
 				C55CC8C11A5F677100B4845F /* Product.m in Sources */,
+				C58859CE1A61EEDA00CF7346 /* DiscoverViewController.m in Sources */,
 				C50A22881A3FCC050086872D /* AppDelegate.m in Sources */,
 				C59605261A41361B00900245 /* CustomButton.m in Sources */,
 				C507EA5A1A43B0E900376C3F /* Glam.m in Sources */,
@@ -1215,7 +1222,6 @@
 				C507EA6F1A43C62E00376C3F /* Activity.m in Sources */,
 				C56B64AC1A4356A1008CA2D4 /* SignUpViewController.m in Sources */,
 				C507EA631A43B2BB00376C3F /* CustomCell.m in Sources */,
-				C507EA751A43D15700376C3F /* DiscoverCollectionViewController.m in Sources */,
 				C507EA7B1A43D19300376C3F /* DiscoverCell.m in Sources */,
 				C507EA7E1A43DBB800376C3F /* ProfileViewController.m in Sources */,
 				C50A22851A3FCC050086872D /* main.m in Sources */,

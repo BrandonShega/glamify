@@ -36,8 +36,6 @@
     
     PFUser *user = [PFUser currentUser];
     
-    NSLog(@"%@", username);
-    
     if (user) {
         
         [self performSegueWithIdentifier:@"loginSegue" sender:self];
@@ -79,6 +77,8 @@
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser *user, NSError *error) {
         if (user) {
             
+            userText.text = @"";
+            passwordText.text = @"";
             [self performSegueWithIdentifier:@"loginSegue" sender:self];
             
         } else {

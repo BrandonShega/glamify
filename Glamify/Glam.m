@@ -11,7 +11,7 @@
 
 @implementation Glam
 
-@synthesize user, name, category, comments, products, image;
+@synthesize user, name, category, comments, products, image, glamId;
 
 - (void)saveGlam
 {
@@ -37,25 +37,17 @@
     glamToSave[@"name"] = self.name;
     glamToSave[@"products"] = arrayCopy;
     
-    //save glam and retrieve ID to upload associated image
-    [glamToSave save];
-    
-    NSString *objectID = [glamToSave objectId];
-    
     PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:self.image];
     
     [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         
         if (!error) {
             
-            PFObject *glamPhoto = [PFObject objectWithClassName:@"GlamPhoto"];
-            glamPhoto[@"imageFile"] = imageFile;
-            glamPhoto[@"user"] = self.user;
-            glamPhoto[@"glam"] = objectID;
+            glamToSave[@"imageFile"] = imageFile;
+            //glamToSave.ACL = [PFACL ACLWithUser:self.user];
             
-            glamPhoto.ACL = [PFACL ACLWithUser:self.user];
+            [glamToSave saveInBackground];
             
-            [glamPhoto saveInBackground];
         } else {
             
             NSLog(@"Error %@ %@", error, [error userInfo]);
