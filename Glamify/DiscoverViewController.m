@@ -44,8 +44,16 @@
     
     [super viewDidAppear:animated];
     
+
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+
+    [super viewWillAppear:animated];
+
     [self loadGlams];
-    
+
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -55,31 +63,26 @@
 
 - (void)loadGlams
 {
+    __block NSMutableArray *glamArray = [NSMutableArray array];
     
     PFQuery *query = [PFQuery queryWithClassName:@"Glam"];
     
     //query.limit = 50;
     
     [query whereKey:@"user" notEqualTo:[PFUser currentUser]];
-//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//        
-//        if (!error) {
-//            
-//            glamArray = [objects mutableCopy];
-//            
-//            NSLog(@"%@", objects);
-//            
-//        } else {
-//            
-//            NSLog(@"Error: %@ %@", error, [error userInfo]);
-//            
-//        }
-//        
-//    }];
-    
-    glamArray = [NSMutableArray arrayWithArray:[query findObjects]];
-    
-    [self loadImages:glamArray];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+
+        if (!error) {
+
+            [self loadImages:objects];
+
+        } else {
+
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+
+        }
+
+    }];
     
 }
 
@@ -104,49 +107,58 @@
         for (PFObject *object in images) {
             
             PFFile *imageFile = [object objectForKey:@"imageFile"];
-            NSData *imageData = [imageFile getData];
-            
-            Glam *glam = [[Glam alloc] init];
-            
-            glam.glamId = [object objectId];
-            glam.image = imageData;
-            
-            [imageArray addObject:glam];
+
+            [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+
+
+                if (!error) {
+
+                    Glam *glam = [[Glam alloc] init];
+
+                    glam.glamId = [object objectId];
+                    glam.image = data;
+
+                    [imageArray addObject:glam];
+
+                } else {
+
+                    NSLog(@"Error: %@ %@", error);
+
+                }
+
+            }];
             
         }
         
-        //dispatch_async(dispatch_get_main_queue(), ^{
+
+        for (int i = 0; i < [imageArray count]; i++) {
+
+            Glam *eachGlam = [imageArray objectAtIndex:i];
+
+            GlamButton *glamButton = [GlamButton buttonWithType:UIButtonTypeCustom];
+
+            UIImage *image = [UIImage imageWithData:eachGlam.image];
+
+            [glamButton setImage:image forState:UIControlStateNormal];
+
+            glamButton.glamid = eachGlam.glamId;
+
+            glamButton.frame = CGRectMake(IMAGE_WIDTH * (i % NUMBER_OF_COLUMNS) + PADDING * (i % NUMBER_OF_COLUMNS) + PADDING, IMAGE_HEIGHT * (i / NUMBER_OF_COLUMNS) + PADDING * (i / NUMBER_OF_COLUMNS) + PADDING, IMAGE_WIDTH, IMAGE_HEIGHT);
+
+            glamButton.imageView.contentMode = UIViewContentModeScaleAspectFill;
+
+            [glamButton addTarget:self action:@selector(imageClicked:) forControlEvents:UIControlEventTouchUpInside];
+
+            [photoView addSubview:glamButton];
+
+        }
+
+        int rows = (int)imageArray.count / NUMBER_OF_COLUMNS;
+
+        int height = IMAGE_HEIGHT * rows + PADDING * rows;
+
+        photoView.contentSize = CGSizeMake(self.view.frame.size.width, height);
             
-            for (int i = 0; i < [imageArray count]; i++) {
-                
-                Glam *eachGlam = [imageArray objectAtIndex:i];
-                
-                GlamButton *glamButton = [GlamButton buttonWithType:UIButtonTypeCustom];
-                
-                UIImage *image = [UIImage imageWithData:eachGlam.image];
-                
-                [glamButton setImage:image forState:UIControlStateNormal];
-                
-                glamButton.glamid = eachGlam.glamId;
-                
-                glamButton.frame = CGRectMake(IMAGE_WIDTH * (i % NUMBER_OF_COLUMNS) + PADDING * (i % NUMBER_OF_COLUMNS) + PADDING, IMAGE_HEIGHT * (i / NUMBER_OF_COLUMNS) + PADDING * (i / NUMBER_OF_COLUMNS) + PADDING, IMAGE_WIDTH, IMAGE_HEIGHT);
-                
-                glamButton.imageView.contentMode = UIViewContentModeScaleAspectFill;
-                
-                [glamButton addTarget:self action:@selector(imageClicked:) forControlEvents:UIControlEventTouchUpInside];
-                
-                [photoView addSubview:glamButton];
-                
-            }
-            
-            int rows = (int)imageArray.count / NUMBER_OF_COLUMNS;
-            
-            int height = IMAGE_HEIGHT * rows + PADDING * rows;
-            
-            photoView.contentSize = CGSizeMake(self.view.frame.size.width, height);
-            
-       // });
-    
 }
 
 /*

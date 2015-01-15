@@ -11,7 +11,7 @@
 
 @implementation Glam
 
-@synthesize user, name, category, comments, products, image, glamId;
+@synthesize user, name, category, comments, products, image, glamId, thumbnail;
 
 - (void)saveGlam
 {
@@ -24,8 +24,8 @@
         
         NSMutableDictionary *productDict = [NSMutableDictionary dictionary];
         
-        [productDict setObject:eachProduct.name forKey:@"name"];
-        [productDict setObject:eachProduct.productURL forKey:@"productURL"];
+        productDict[@"name"] = eachProduct.name;
+        productDict[@"productURL"] = eachProduct.productURL;
         
         [productArray addObject:productDict];
         
@@ -38,6 +38,8 @@
     glamToSave[@"products"] = arrayCopy;
     
     PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:self.image];
+    
+    
     
     [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         

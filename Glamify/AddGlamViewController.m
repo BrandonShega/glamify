@@ -10,6 +10,8 @@
 #import "AddProductViewController.h"
 #import "Product.h"
 #import "Glam.h"
+#import "UIImage+Resize.h"
+#import "UIImage+RoundedCorner.h"
 
 @interface AddGlamViewController () <ProductDelegate, UIAlertViewDelegate>
 
@@ -35,7 +37,7 @@
     
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     
-    picker.delegate = self;
+    picker.delegate = (id <UINavigationControllerDelegate, UIImagePickerControllerDelegate>) self;
     picker.allowsEditing = NO;
     picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
@@ -188,6 +190,8 @@
     Glam *newGlam = [[Glam alloc] init];
     PFUser *currentUser = [PFUser currentUser];
     UIImage *currentImage = [self.glamImage imageForState:UIControlStateNormal];
+    
+    UIImage *resized =  [currentImage resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(560.0f, 560.0f) interpolationQuality:kCGInterpolationHigh];
     
     NSData *imageData = UIImageJPEGRepresentation(currentImage, 0.05f);
     

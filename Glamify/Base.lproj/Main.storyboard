@@ -519,9 +519,16 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Ma-RJ-9Az">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <color key="backgroundColor" red="1" green="0.42454410120000002" blue="0.68364747879999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="1" green="0.42454410120000002" blue="0.68364747879999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="1" green="0.42454410120000002" blue="0.68364747879999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem title="Settings" id="AB6-ie-zCO">
                                         <barButtonItem key="rightBarButtonItem" title="Done" id="5cR-LU-FoS">
+                                            <color key="tintColor" red="1" green="0.73115551850000005" blue="0.82709934610000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="settingsDone:" destination="R8m-GO-uBo" id="fWe-OS-s6H"/>
                                             </connections>
@@ -529,12 +536,9 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="renata.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ue6-i8-02H">
-                                <rect key="frame" x="17" y="44" width="287" height="233"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Click your picture to change it" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IKa-xH-F5k">
-                                <rect key="frame" x="45" y="285" width="230" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tap to change" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IKa-xH-F5k">
+                                <rect key="frame" x="12" y="152" width="90" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -551,28 +555,34 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8RP-M6-bHK">
                                 <rect key="frame" x="132" y="463" width="56" height="30"/>
                                 <state key="normal" title="Log Out">
+                                    <color key="titleColor" red="1" green="0.42454410120000002" blue="0.68364747879999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="logoutButton:" destination="R8m-GO-uBo" eventType="touchUpInside" id="3fZ-Ah-htF"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3RG-CZ-OdY">
-                                <rect key="frame" x="0.0" y="362" width="320" height="40"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aqZ-XH-4BX">
                                 <rect key="frame" x="143" y="418" width="34" height="30"/>
                                 <state key="normal" title="Save">
+                                    <color key="titleColor" red="1" green="0.42454410120000002" blue="0.68364747879999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="saveButton:" destination="R8m-GO-uBo" eventType="touchUpInside" id="ZrF-hZ-QbF"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="renata.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ue6-i8-02H">
+                                <rect key="frame" x="12" y="59" width="90" height="90"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Brandon" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3RG-CZ-OdY">
+                                <rect key="frame" x="114" y="59" width="195" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.82235638099999997" blue="0.89023677030000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.73115551847410565" blue="0.82709934612892078" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
                         <outlet property="nameText" destination="3RG-CZ-OdY" id="I1h-bT-Jt2"/>
@@ -580,7 +590,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RfK-jF-yeL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2349" y="811"/>
+            <point key="canvasLocation" x="2347" y="811"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="oqb-Ud-tXL">

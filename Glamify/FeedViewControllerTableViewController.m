@@ -47,13 +47,29 @@
     
     [followQuery whereKey:@"fromUser" equalTo:[PFUser currentUser]];
     [followQuery whereKey:@"type" equalTo:@"follow"];
+
+    NSLog(@"%@", [followQuery findObjects]);
     
     PFQuery *glamQuery = [PFQuery queryWithClassName:@"Glam"];
     
-    [glamQuery whereKey:@"user" matchesKey:@"fromUser" inQuery:followQuery];
-    
-    glamArray = [NSMutableArray arrayWithArray:[glamQuery findObjects]];
-    
+    [glamQuery whereKey:@"user" matchesKey:@"toUser" inQuery:followQuery];
+
+    [glamQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+
+        if (!error) {
+
+            glamArray = [NSMutableArray arrayWithArray:objects];
+
+            [self.feedTableView reloadData];
+
+        } else {
+
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+
+        }
+
+    }];
+
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -88,10 +104,23 @@
         NSString *glamName = [glam objectForKey:@"name"];
         
         PFFile *imageFile = [glam objectForKey:@"imageFile"];
-        NSData *imageData = [imageFile getData];
-        UIImage *glamImage = [UIImage imageWithData:imageData];
-        
-        [cell setLabel:glamName andImage:glamImage];
+        [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+
+            if (!error) {
+
+                UIImage *glamImage = [UIImage imageWithData:data];
+
+                [cell setLabel:glamName andImage:glamImage];
+
+            } else {
+
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+
+            }
+
+
+        }];
+
         
     }
     

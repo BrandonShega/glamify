@@ -23,6 +23,7 @@
 @property (weak, nonatomic) NSMutableArray *comments;
 @property (weak, nonatomic) NSMutableArray *products;
 @property (weak, nonatomic) NSData *image;
+@property (weak, nonatomic) NSData *thumbnail;
 
 - (void)saveGlam;
 

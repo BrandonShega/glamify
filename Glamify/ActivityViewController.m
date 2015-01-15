@@ -40,9 +40,24 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Activity"];
     [query whereKey:@"fromUser" notEqualTo:[PFUser currentUser]];
     [query whereKey:@"toUser" equalTo:[PFUser currentUser]];
+
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+
+        if (!error) {
+
+            activityArray = [NSMutableArray arrayWithArray:objects];
+
+            [self.tableView reloadData];
+
+        } else {
+
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+
+        }
+
+    }];
     
-    activityArray = [NSMutableArray arrayWithArray:[query findObjects]];
-    
+
 }
 
 - (BOOL)prefersStatusBarHidden
