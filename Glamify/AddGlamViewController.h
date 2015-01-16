@@ -12,6 +12,7 @@
 @interface AddGlamViewController : UIViewController <UIImagePickerControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     NSMutableArray *productArray;
+    NSArray *data;
 }
 
 - (IBAction)addProductButton:(id)sender;
@@ -21,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *glamNameText;
 @property (weak, nonatomic) IBOutlet UITableView *productTableView;
 @property (weak, nonatomic) IBOutlet UIButton *glamImage;
+@property (weak, nonatomic) IBOutlet UIPickerView *category;
 
 - (void)chooseImage;
 - (void)galleryImage;

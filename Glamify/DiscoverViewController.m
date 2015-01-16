@@ -10,7 +10,7 @@
 #import "Glam.h"
 #import "DiscoverDetailViewController.h"
 
-@interface DiscoverViewController ()
+@interface DiscoverViewController () <UISearchBarDelegate>
 {
     NSMutableArray *glamArray;
 }
@@ -24,11 +24,13 @@
 #define NUMBER_OF_COLUMNS 4
 #define PADDING 4
 
-@synthesize photoView;
+@synthesize photoView, discoverSearch;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [discoverSearch setDelegate:self];
     
     
     //glamArray = [[NSMutableArray alloc] init];
@@ -45,6 +47,42 @@
     [super viewDidAppear:animated];
     
 
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    
+    if ([searchText length] > 3) {
+        
+        NSArray *viewsToRemove = [photoView subviews];
+        
+        for (UIView *v in viewsToRemove) {
+            [v removeFromSuperview];
+        }
+     
+        PFQuery *query = [PFQuery queryWithClassName:@"Glam"];
+        
+        [query whereKey:@"category" containsString:searchText];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            
+            if (!error) {
+                
+                [self loadImages:objects];
+                
+            } else {
+                
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+                
+            }
+            
+        }];
+        
+    } else if ([searchText length] == 0) {
+        
+        [self loadGlams];
+        
+    }
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated

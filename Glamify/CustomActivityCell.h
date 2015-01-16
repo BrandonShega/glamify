@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface CustomActivityCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *userImage;
 @property (weak, nonatomic) IBOutlet UILabel *activityStatus;
 
-- (void)setLabel:(NSString *)label;
+- (void)setLabel:(NSString *)label andImage:(UIImage *)image;
 
 @end

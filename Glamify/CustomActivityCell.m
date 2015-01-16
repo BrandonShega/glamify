@@ -22,10 +22,18 @@
     // Configure the view for the selected state
 }
 
-- (void)setLabel:(NSString *)label
+- (void)layoutSubviews {
+    
+    userImage.clipsToBounds = YES;
+    userImage.layer.cornerRadius = userImage.frame.size.width / 2;
+    
+}
+
+- (void)setLabel:(NSString *)label andImage:(UIImage *)image
 {
     
     [activityStatus setText:label];
+    [userImage setImage:image];
     
 }
 

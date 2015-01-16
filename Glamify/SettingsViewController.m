@@ -15,7 +15,7 @@
 
 @implementation SettingsViewController
 {
-    BOOL *takingPicture;
+    BOOL takingPicture;
 }
 
 @synthesize firstNameText, lastNameText, youtubeText, profileText, profilePicture;
@@ -145,14 +145,12 @@
     
     PFUser *user = [PFUser currentUser];
     
-    NSString *name = user[@"name"];
+    [user fetchIfNeeded];
+    
+    NSString *firstName = user[@"firstName"];
+    NSString *lastName = user[@"lastName"];
     NSString *youtube = user[@"youtube"];
     NSString *profile = user[@"profile"];
-    
-    NSArray *nameParts = [name componentsSeparatedByString:@" "];
-    
-    NSString *firstName = nameParts[0];
-    NSString *lastName = nameParts[1];
 
     if (!takingPicture) {
 
@@ -205,7 +203,6 @@
     NSString *lastName = [lastNameText text];
     NSString *youtube = [youtubeText text];
     NSString *profile = [profileText text];
-    NSString *name = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
 
     UIImage *profileImage = [profilePicture imageForState:UIControlStateNormal];
     NSData *imageData = UIImageJPEGRepresentation(profileImage, 0.05f);
@@ -217,7 +214,8 @@
         if (!error) {
 
             user[@"image"] = imageFile;
-            [user setObject:name forKey:@"name"];
+            [user setObject:firstName forKey:@"firstName"];
+            [user setObject:lastName forKey:@"lastName"];
             [user setObject:youtube forKey:@"youtube"];
             [user setObject:profile forKey:@"profile"];
             [user save];

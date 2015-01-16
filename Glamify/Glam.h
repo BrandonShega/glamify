@@ -24,6 +24,7 @@
 @property (weak, nonatomic) NSMutableArray *products;
 @property (weak, nonatomic) NSData *image;
 @property (weak, nonatomic) NSData *thumbnail;
+@property (weak, nonatomic) NSData *posterImage;
 
 - (void)saveGlam;
 

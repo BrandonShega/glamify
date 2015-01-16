@@ -20,4 +20,6 @@
 
 - (void)imageClicked:(GlamButton *)sender;
 
+@property (weak, nonatomic) IBOutlet UISearchBar *discoverSearch;
+
 @end

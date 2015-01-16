@@ -49,18 +49,19 @@
     
     [followQuery whereKey:@"fromUser" equalTo:[PFUser currentUser]];
     [followQuery whereKey:@"type" equalTo:@"follow"];
-
-    NSLog(@"%@", [followQuery findObjects]);
     
     PFQuery *glamQuery = [PFQuery queryWithClassName:@"Glam"];
     
     [glamQuery whereKey:@"user" matchesKey:@"toUser" inQuery:followQuery];
+    [glamQuery addDescendingOrder:@"createdAt"];
 
     [glamQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
 
         if (!error) {
 
             glamArray = [NSMutableArray arrayWithArray:objects];
+            
+            NSLog(@"ARRAY FOR FEED: %@", glamArray);
 
             [self.feedTableView reloadData];
 
@@ -99,22 +100,44 @@
     
     CustomCell *cell = (CustomCell *)[feedTableView dequeueReusableCellWithIdentifier:@"Cell"];
     
-    if (cell == nil) {
+    if (cell != nil) {
         
-        cell = [[CustomCell alloc] init];
+        //cell = [[CustomCell alloc] init];
         
         PFObject *glam = [glamArray objectAtIndex:indexPath.row];
         
         NSString *glamName = [glam objectForKey:@"name"];
         
+        PFUser *user = [glam objectForKey:@"user"];
+        
+        [user fetchIfNeeded];
+        
+        NSString *firstName = (user[@"firstName"] == nil) ? @"" : user[@"firstName"];
+        NSString *lastName = (user[@"lastName"] == nil) ? @"" : user[@"lastName"];
+        
+        NSString *posterName = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+        
+        PFFile *posterFile = [user objectForKey:@"image"];
+        NSData *posterData = [posterFile getData];
+        
         PFFile *imageFile = [glam objectForKey:@"imageFile"];
+        
+        Glam *newGlam = [[Glam alloc] init];
+        
+        NSString *glamId = [glam objectId];
+        
+        newGlam.glamId = glamId;
+        newGlam.user = user;
+        
         [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
 
             if (!error) {
 
                 UIImage *glamImage = [UIImage imageWithData:data];
+                UIImage *posterImage = [UIImage imageWithData:posterData];
 
-                [cell setLabel:glamName andImage:glamImage];
+                [cell setLabel:glamName andImage:glamImage andPostersImage:posterImage andPostersName:posterName];
+                [cell assignGlam:newGlam];
 
             } else {
 

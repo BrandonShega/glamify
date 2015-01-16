@@ -13,13 +13,13 @@
 #import "UIImage+Resize.h"
 #import "UIImage+RoundedCorner.h"
 
-@interface AddGlamViewController () <ProductDelegate, UIAlertViewDelegate>
+@interface AddGlamViewController () <UIAlertViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 
 @end
 
-@implementation AddGlamViewController
+@implementation AddGlamViewController;
 
-@synthesize productTableView, glamNameText, glamImage;
+@synthesize productTableView, glamNameText, glamImage, category;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -30,6 +30,26 @@
     [productTableView setDelegate:self];
     [productTableView setDataSource:self];
     
+    [category setDelegate:self];
+    [category setDataSource:self];
+    
+    data = [[NSArray alloc] initWithObjects:@"Makeup", @"Hair", @"Outfit", @"Nails", nil];
+    
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return [data count];
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return [data objectAtIndex:row];
 }
 
 - (void)galleryImage
@@ -111,14 +131,6 @@
     return YES;
 }
 
-#pragma mark ProductDelegate
-- (void)productViewControllerDismissedwithProduct:(Product *)product
-{
-    
-    [productArray addObject:product];
-    
-}
-
 - (void)viewDidAppear:(BOOL)animated
 {
     
@@ -170,18 +182,18 @@
 */
 
 //Open modal for user to add a product to glam
-- (IBAction)addProductButton:(id)sender
-{
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    AddProductViewController *pvc = [storyboard instantiateViewControllerWithIdentifier:@"AddProductViewController"];
-    [pvc setModalPresentationStyle:UIModalPresentationFullScreen];
-    
-    pvc.delegate = self;
-    
-    [self presentViewController:pvc animated:YES completion:nil];
-    
-}
+//- (IBAction)addProductButton:(id)sender
+//{
+//    
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    AddProductViewController *pvc = [storyboard instantiateViewControllerWithIdentifier:@"AddProductViewController"];
+//    [pvc setModalPresentationStyle:UIModalPresentationFullScreen];
+//    
+//    pvc.delegate = self;
+//    
+//    [self presentViewController:pvc animated:YES completion:nil];
+//    
+//}
 
 //Create new glam object and then save to database
 - (IBAction)saveGlamButton:(id)sender

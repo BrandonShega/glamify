@@ -99,25 +99,35 @@
         [fromUser fetchIfNeeded];
         [toUser fetchIfNeeded];
         
+        PFFile *imageFile = fromUser[@"image"];
+        NSData *imageData = [imageFile getData];
+        
+        UIImage *image = [UIImage imageWithData:imageData];
+        
         NSString *message;
         
         NSString *type = [activity objectForKey:@"type"];
         
+        NSString *firstName = (fromUser[@"firstName"] == nil) ? @"" : fromUser[@"firstName"];
+        NSString *lastName = (fromUser[@"lastName"] == nil) ? @"" : fromUser[@"lastName"];
+        
+        NSString *name = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+        
         if ([type isEqual:@"follow"]) {
             
-            message = [NSString stringWithFormat:@"%@ followed you!", [fromUser objectForKey:@"name"]];
+            message = [NSString stringWithFormat:@"%@ followed you!", name];
             
-        } else if ([type isEqual:@"like"]) {
+        } else if ([type isEqual:@"favorite"]) {
             
-            message = [NSString stringWithFormat:@"%@ liked your photo!", [fromUser objectForKey:@"name"]];
+            message = [NSString stringWithFormat:@"%@ favorited your photo!", name];
             
         } else if ([type isEqual:@"comment"]) {
             
-            message = [NSString stringWithFormat:@"%@ commented on your photo!", [fromUser objectForKey:@"name"]];
+            message = [NSString stringWithFormat:@"%@ commented on your photo!", name];
             
         }
         
-        [cell setLabel:message];
+        [cell setLabel:message andImage:image];
         
     }
     
