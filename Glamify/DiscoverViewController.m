@@ -63,7 +63,6 @@
 
 - (void)loadGlams
 {
-    __block NSMutableArray *glamArray = [NSMutableArray array];
     
     PFQuery *query = [PFQuery queryWithClassName:@"Glam"];
     
@@ -108,25 +107,14 @@
             
             PFFile *imageFile = [object objectForKey:@"imageFile"];
 
-            [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-
-
-                if (!error) {
-
-                    Glam *glam = [[Glam alloc] init];
-
-                    glam.glamId = [object objectId];
-                    glam.image = data;
-
-                    [imageArray addObject:glam];
-
-                } else {
-
-                    NSLog(@"Error: %@ %@", error);
-
-                }
-
-            }];
+            NSData *imageData = [imageFile getData];
+            
+            Glam *glam = [[Glam alloc] init];
+            
+            glam.image = imageData;
+            glam.glamId = [object objectId];
+            
+            [imageArray addObject:glam];
             
         }
         

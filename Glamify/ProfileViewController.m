@@ -15,6 +15,8 @@
 
 @implementation ProfileViewController
 
+@synthesize profileImage;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -28,6 +30,23 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    PFUser *user = [PFUser currentUser];
+    
+    PFFile *imageFile = user[@"image"];
+    NSData *imageData = [imageFile getData];
+    UIImage *image = [UIImage imageWithData:imageData];
+    
+    profileImage.image = image;
+    
+    profileImage.clipsToBounds = YES;
+    profileImage.layer.cornerRadius = 200 / 2.0;
+    
 }
 
 /*

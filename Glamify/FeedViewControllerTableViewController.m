@@ -32,6 +32,8 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    [feedTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,9 +41,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+    [super viewWillAppear:animated];
     
     PFQuery *followQuery = [PFQuery queryWithClassName:@"Activity"];
     
@@ -95,9 +97,11 @@
     
     // Configure the cell...
     
-    CustomCell *cell = [feedTableView dequeueReusableCellWithIdentifier:@"Cell"];
+    CustomCell *cell = (CustomCell *)[feedTableView dequeueReusableCellWithIdentifier:@"Cell"];
     
-    if (cell != nil) {
+    if (cell == nil) {
+        
+        cell = [[CustomCell alloc] init];
         
         PFObject *glam = [glamArray objectAtIndex:indexPath.row];
         

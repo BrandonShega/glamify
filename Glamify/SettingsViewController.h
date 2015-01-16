@@ -19,7 +19,17 @@
 
 @property (nonatomic, weak) id<SettingsDelegte> delegate;
 
-@property (weak, nonatomic) IBOutlet UITextField *nameText;
+@property (weak, nonatomic) IBOutlet UITextField *firstNameText;
+@property (weak, nonatomic) IBOutlet UITextField *lastNameText;
+@property (weak, nonatomic) IBOutlet UITextField *youtubeText;
+@property (weak, nonatomic) IBOutlet UITextView *profileText;
+@property (weak, nonatomic) IBOutlet UIButton *profilePicture;
+
+- (void)cameraImage;
+- (void)galleryImage;
+- (void)chooseImage;
+
+- (IBAction)changePictureButton:(id)sender;
 
 - (IBAction)settingsDone:(id)sender;
 

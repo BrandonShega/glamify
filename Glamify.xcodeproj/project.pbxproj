@@ -257,6 +257,7 @@
 		C59605201A412D5000900245 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596051F1A412D5000900245 /* LoginViewController.m */; };
 		C59605231A41360300900245 /* StyleKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C59605221A41360300900245 /* StyleKit.m */; };
 		C59605261A41361B00900245 /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C59605251A41361B00900245 /* CustomButton.m */; };
+		C5E37AED1A67540E009D96E6 /* person2-512.png in Resources */ = {isa = PBXBuildFile; fileRef = C5E37AEC1A67540E009D96E6 /* person2-512.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -549,6 +550,7 @@
 		C59605221A41360300900245 /* StyleKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyleKit.m; sourceTree = "<group>"; };
 		C59605241A41361B00900245 /* CustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
 		C59605251A41361B00900245 /* CustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomButton.m; sourceTree = "<group>"; };
+		C5E37AEC1A67540E009D96E6 /* person2-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "person2-512.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -918,6 +920,7 @@
 		C59605171A41224A00900245 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				C5E37AEC1A67540E009D96E6 /* person2-512.png */,
 				C58859C71A617E5E00CF7346 /* imagepicker.png */,
 				C507E8C51A43AD1900376C3F /* iconbeast lite 200 - png */,
 				C596051C1A4123AF00900245 /* glamifylogo.png */,
@@ -1038,6 +1041,7 @@
 				C507E9C31A43AD1900376C3F /* connect-arrow-up-right-7.png in Resources */,
 				C507E9DD1A43AD1900376C3F /* folder-7.png in Resources */,
 				C507E99D1A43AD1900376C3F /* book-cover-star-7.png in Resources */,
+				C5E37AED1A67540E009D96E6 /* person2-512.png in Resources */,
 				C507EA2A1A43AD1900376C3F /* recorder-7.png in Resources */,
 				C507EA0B1A43AD1900376C3F /* number-3-7.png in Resources */,
 				C507EA4C1A43AD1900376C3F /* video-camera-7.png in Resources */,

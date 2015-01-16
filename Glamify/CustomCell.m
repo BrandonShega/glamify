@@ -10,7 +10,36 @@
 
 @implementation CustomCell
 
-@synthesize glamImage, glamName, glamNameString;
+@synthesize glamImage, glamName, glamNameString, headerView;
+
+- (id)init
+{
+    
+    self = [super init];
+    
+    if (self) {
+        
+        
+        
+    }
+    
+    return self;
+    
+}
+
+- (void)layoutSubviews
+{
+    
+    [super layoutSubviews];
+    
+    self.headerView.layer.masksToBounds = YES;
+    self.headerView.layer.shadowColor = (__bridge CGColorRef)([UIColor blackColor]);
+    self.headerView.layer.shadowOffset = CGSizeMake(304, 60);
+    self.headerView.layer.shadowRadius = 20;
+    self.headerView.layer.shadowOpacity = 0.5;
+    self.headerView.backgroundColor = [UIColor redColor];
+    
+}
 
 - (void)awakeFromNib {
     // Initialization code

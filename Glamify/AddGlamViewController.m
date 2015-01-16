@@ -50,7 +50,7 @@
     
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     
-    picker.delegate = self;
+    picker.delegate = (id <UINavigationControllerDelegate, UIImagePickerControllerDelegate>) self;
     picker.allowsEditing = NO;
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     
