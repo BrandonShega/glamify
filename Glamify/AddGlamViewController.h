@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *productTableView;
 @property (weak, nonatomic) IBOutlet UIButton *glamImage;
 @property (weak, nonatomic) IBOutlet UIPickerView *category;
+@property (weak, nonatomic) IBOutlet UITextField *glamCategory;
 
 - (void)chooseImage;
 - (void)galleryImage;

@@ -249,6 +249,10 @@
 		C55CC8BC1A5F55E300B4845F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C55CC8BB1A5F55E300B4845F /* libz.dylib */; };
 		C55CC8BE1A5F55EE00B4845F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C55CC8BD1A5F55EE00B4845F /* libsqlite3.dylib */; };
 		C55CC8C11A5F677100B4845F /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = C55CC8C01A5F677100B4845F /* Product.m */; };
+		C56058201A7335C600074D5A /* ui-icon-pack-14-512.png in Resources */ = {isa = PBXBuildFile; fileRef = C560581F1A7335C600074D5A /* ui-icon-pack-14-512.png */; };
+		C56058241A73374400074D5A /* eye.png in Resources */ = {isa = PBXBuildFile; fileRef = C56058231A73374400074D5A /* eye.png */; };
+		C56058261A7341BA00074D5A /* heart-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = C56058251A7341BA00074D5A /* heart-selected.png */; };
+		C56058281A73435700074D5A /* message-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = C56058271A73435700074D5A /* message-selected.png */; };
 		C56B64AC1A4356A1008CA2D4 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C56B64AB1A4356A1008CA2D4 /* SignUpViewController.m */; };
 		C56B64B21A437B3A008CA2D4 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C56B64B11A437B3A008CA2D4 /* MainViewController.m */; };
 		C58859C81A617E5E00CF7346 /* imagepicker.png in Resources */ = {isa = PBXBuildFile; fileRef = C58859C71A617E5E00CF7346 /* imagepicker.png */; };
@@ -539,6 +543,10 @@
 		C55CC8BD1A5F55EE00B4845F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		C55CC8BF1A5F677100B4845F /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
 		C55CC8C01A5F677100B4845F /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
+		C560581F1A7335C600074D5A /* ui-icon-pack-14-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ui-icon-pack-14-512.png"; sourceTree = "<group>"; };
+		C56058231A73374400074D5A /* eye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eye.png; sourceTree = "<group>"; };
+		C56058251A7341BA00074D5A /* heart-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heart-selected.png"; sourceTree = "<group>"; };
+		C56058271A73435700074D5A /* message-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message-selected.png"; sourceTree = "<group>"; };
 		C56B64AA1A4356A1008CA2D4 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		C56B64AB1A4356A1008CA2D4 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		C56B64B01A437B3A008CA2D4 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -930,6 +938,10 @@
 		C59605171A41224A00900245 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				C56058271A73435700074D5A /* message-selected.png */,
+				C56058251A7341BA00074D5A /* heart-selected.png */,
+				C56058231A73374400074D5A /* eye.png */,
+				C560581F1A7335C600074D5A /* ui-icon-pack-14-512.png */,
 				C5E37AEC1A67540E009D96E6 /* person2-512.png */,
 				C58859C71A617E5E00CF7346 /* imagepicker.png */,
 				C507E8C51A43AD1900376C3F /* iconbeast lite 200 - png */,
@@ -1063,7 +1075,9 @@
 				C507EA211A43AD1900376C3F /* photos-simple-7.png in Resources */,
 				C507E9971A43AD1900376C3F /* bell-7.png in Resources */,
 				C507E9CA1A43AD1900376C3F /* earth-america-7.png in Resources */,
+				C56058241A73374400074D5A /* eye.png in Resources */,
 				C507E9A71A43AD1900376C3F /* calendar-7.png in Resources */,
+				C56058201A7335C600074D5A /* ui-icon-pack-14-512.png in Resources */,
 				C507EA191A43AD1900376C3F /* paper-piece-plus-7.png in Resources */,
 				C507EA4A1A43AD1900376C3F /* upload-7.png in Resources */,
 				C507E9BF1A43AD1900376C3F /* connect-arrow-right-7.png in Resources */,
@@ -1107,6 +1121,7 @@
 				C507E9C91A43AD1900376C3F /* dumbbell-7.png in Resources */,
 				C507E9EA1A43AD1900376C3F /* house-7.png in Resources */,
 				C507E9FA1A43AD1900376C3F /* link-7.png in Resources */,
+				C56058281A73435700074D5A /* message-selected.png in Resources */,
 				C507EA381A43AD1900376C3F /* table-tennis-7.png in Resources */,
 				C507E9C11A43AD1900376C3F /* connect-arrow-up-down-7.png in Resources */,
 				C507EA1D1A43AD1900376C3F /* pencil-7.png in Resources */,
@@ -1184,6 +1199,7 @@
 				C507E9A01A43AD1900376C3F /* bookmark-7.png in Resources */,
 				C507E9AD1A43AD1900376C3F /* character-d-7.png in Resources */,
 				C507E9981A43AD1900376C3F /* bell-off-7.png in Resources */,
+				C56058261A7341BA00074D5A /* heart-selected.png in Resources */,
 				C507EA491A43AD1900376C3F /* update-7.png in Resources */,
 				C507EA0A1A43AD1900376C3F /* number-2-7.png in Resources */,
 				C507EA351A43AD1900376C3F /* speaker-7.png in Resources */,

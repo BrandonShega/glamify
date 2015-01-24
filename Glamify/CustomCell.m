@@ -8,10 +8,12 @@
 
 #import "CustomCell.h"
 #import "Glam.h"
+#import "CommentViewController.h"
+#import "AppDelegate.h"
 
 @implementation CustomCell
 
-@synthesize glamImage, glamName, glamNameString, headerView, postersImage, postersName, favoriteButton;
+@synthesize glamImage, glamName, glamNameString, headerView, postersImage, postersName, favoriteButton, cardView, commentButton;
 
 - (id)init
 {
@@ -48,7 +50,13 @@
     self.headerView.layer.shadowPath = path.CGPath;
     
     postersImage.clipsToBounds = YES;
-    postersImage.layer.cornerRadius = 25;
+    postersImage.layer.cornerRadius = 20;
+    
+    self.cardView.layer.shadowOffset = CGSizeMake(1, 1);
+    self.cardView.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.cardView.layer.shadowRadius = 4.0f;
+    self.cardView.layer.shadowOpacity = 0.80f;
+    self.cardView.layer.shadowPath = [[UIBezierPath bezierPathWithRect:self.cardView.layer.bounds] CGPath];
     
 }
 
@@ -76,6 +84,8 @@
     favoriteButton.glamId = glamToAssign.glamId;
     favoriteButton.toUser = glamToAssign.user;
     
+    commentButton.glamId = glamToAssign.glamId;
+    
     PFQuery *glamQuery = [PFQuery queryWithClassName:@"Glam"];
     
     [glamQuery whereKey:@"objectId" equalTo:glamToAssign.glamId];
@@ -87,18 +97,28 @@
     [activityQuery whereKey:@"toUser" equalTo:glamToAssign.user];
     [activityQuery whereKey:@"fromUser" equalTo:[PFUser currentUser]];
     
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    
     [activityQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
        
         if (!error) {
             
             if ([objects count] > 0) {
                 
-                [favoriteButton setTitle:@"Unfavorite" forState:UIControlStateNormal];
+                [favoriteButton setSelected:YES];
+                
+                NSNumber *favCount = [NSNumber numberWithInteger:[objects count]];
+                
+                
+                [favoriteButton setTitle:[numberFormatter stringFromNumber:favCount] forState:UIControlStateSelected];
                 
             } else {
                 
-                [favoriteButton setTitle:@"Favorite" forState:UIControlStateNormal];
+                [favoriteButton setSelected:NO];
+                NSNumber *favCount = [NSNumber numberWithInteger:[objects count]];
                 
+                
+                [favoriteButton setTitle:[numberFormatter stringFromNumber:favCount] forState:UIControlStateNormal];
             }
             
         } else {
@@ -114,7 +134,11 @@
 - (IBAction)favoriteAction:(FavoriteButton *)sender
 {
     
-    if ([[favoriteButton titleForState:UIControlStateNormal] isEqualToString:@"Favorite"]) {
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    
+    NSNumber *favCount = [formatter numberFromString:sender.titleLabel.text];
+    
+    if (![favoriteButton isSelected]) {
         
         PFObject *activity = [PFObject objectWithClassName:@"Activity"];
         
@@ -129,7 +153,10 @@
         
         [activity save];
         
-        [favoriteButton setTitle:@"Unfavorite" forState:UIControlStateNormal];
+        favCount = [NSNumber numberWithInt:[favCount intValue] + 1];
+        
+        [favoriteButton setSelected:YES];
+        [favoriteButton setTitle:[formatter stringFromNumber:favCount] forState:UIControlStateSelected];
         
     } else {
         
@@ -148,11 +175,61 @@
         
         [activity delete];
         
-        [favoriteButton setTitle:@"Favorite" forState:UIControlStateNormal];
+        if ([favCount intValue] > 0) {
+         
+            favCount = [NSNumber numberWithInt:[favCount intValue] - 1];
+            
+        }
+        
+        [favoriteButton setSelected:NO];
+        [favoriteButton setTitle:[formatter stringFromNumber:favCount] forState:UIControlStateNormal];
         
     }
     
 }
 
+- (IBAction)commentAction:(FavoriteButton *)sender
+{
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    CommentViewController *cvc = [storyboard instantiateViewControllerWithIdentifier:@"commentViewController"];
+    
+    cvc.delegate = self;
+    
+    [appDelegate.window.rootViewController presentViewController:cvc animated:YES completion:nil];
+    
+}
+
+- (void) didAddComment:(NSString *)comment
+{
+    
+    NSLog(@"%@", commentButton.glamId);
+    
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    
+    NSNumber *commentCount = [formatter numberFromString:commentButton.titleLabel.text];
+    
+    commentCount = [NSNumber numberWithInt:[commentCount intValue] + 1];
+    
+    PFQuery *glamQuery = [PFQuery queryWithClassName:@"Glam"];
+    
+    [glamQuery whereKey:@"objectId" equalTo:commentButton.glamId];
+    PFObject *glam = [glamQuery getFirstObject];
+    
+    PFObject *activity = [PFObject objectWithClassName:@"Activity"];
+    
+    activity[@"type"] = @"comment";
+    activity[@"fromUser"] = [PFUser currentUser];
+    activity[@"glam"] = glam;
+    activity[@"content"] = comment;
+    
+    [activity save];
+    
+    [commentButton setSelected:YES];
+    [commentButton setTitle:[formatter stringFromNumber:commentCount] forState:UIControlStateSelected];
+    
+}
 
 @end

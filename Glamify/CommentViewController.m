@@ -14,9 +14,16 @@
 
 @implementation CommentViewController
 
+@synthesize commentString, commentText;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,6 +42,15 @@
 */
 
 - (IBAction)commentDone:(id)sender
+{
+    commentString = [commentText text];
+    
+    [self.delegate didAddComment:commentString];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+- (IBAction)commentCancel:(id)sender
 {
     
     [self dismissViewControllerAnimated:YES completion:nil];

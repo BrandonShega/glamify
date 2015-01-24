@@ -8,7 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol commentDelegate <NSObject>
+
+- (void)didAddComment:(NSString *)comment;
+
+@end
+
 @interface CommentViewController : UIViewController
+
 - (IBAction)commentDone:(id)sender;
+- (IBAction)commentCancel:(id)sender;
+
+@property (nonatomic, weak) id<commentDelegate> delegate;
+@property (nonatomic, weak) NSString *commentString;
+@property (weak, nonatomic) IBOutlet UITextView *commentText;
 
 @end

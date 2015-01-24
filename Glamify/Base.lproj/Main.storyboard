@@ -228,11 +228,40 @@
                                     <action selector="addImageButton:" destination="oW4-fw-mx4" eventType="touchUpInside" id="jUp-Ad-tPC"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Glam Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lRc-If-hgz">
+                                <rect key="frame" x="16" y="280" width="288" height="46"/>
+                                <color key="backgroundColor" red="0.8901960784313725" green="0.67450980392156867" blue="0.76078431372549016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Glam Category" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kyF-fy-jgW">
+                                <rect key="frame" x="66" y="387" width="188" height="46"/>
+                                <color key="backgroundColor" red="1" green="0.82235638099999997" blue="0.89023677030000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0Q-g2-0pv">
+                                <rect key="frame" x="16" y="334" width="71" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLG-9p-v28">
+                                <rect key="frame" x="206" y="339" width="79" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Products">
+                                    <color key="titleColor" red="0.92156862745098034" green="0.25490196078431371" blue="0.51764705882352946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="val-zC-9Wj" kind="push" id="hrr-yx-sMc"/>
+                                </connections>
+                            </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nJZ-FO-bTI">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <color key="barTintColor" red="1" green="0.42454410120000002" blue="0.68364747879999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="0.90980392156862744" green="0.30980392156862746" blue="0.53725490196078429" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Add A Glam" id="EI6-2b-srC">
@@ -245,33 +274,13 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Glam Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lRc-If-hgz">
-                                <rect key="frame" x="16" y="280" width="188" height="46"/>
-                                <color key="backgroundColor" red="1" green="0.82235638099999997" blue="0.89023677030000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FEa-vM-neO">
+                            <pickerView hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FEa-vM-neO">
                                 <rect key="frame" x="0.0" y="357" width="320" height="162"/>
+                                <color key="tintColor" red="0.5503061414" green="0.75766330959999995" blue="0.87000000479999995" alpha="1" colorSpace="calibratedRGB"/>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0Q-g2-0pv">
-                                <rect key="frame" x="16" y="334" width="71" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLG-9p-v28">
-                                <rect key="frame" x="225" y="288" width="79" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Products">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="val-zC-9Wj" kind="push" id="hrr-yx-sMc"/>
-                                </connections>
-                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.73115551850000005" blue="0.82709934610000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="1" green="0.42352941179999998" blue="0.68235294120000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="5bR-ug-UlS">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="RIP-kd-R0Q">
@@ -282,6 +291,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="category" destination="FEa-vM-neO" id="EGu-Uv-RtV"/>
+                        <outlet property="glamCategory" destination="kyF-fy-jgW" id="QTS-p4-Xrn"/>
                         <outlet property="glamImage" destination="Ecb-lB-zpl" id="8nK-ID-tLL"/>
                         <outlet property="glamNameText" destination="lRc-If-hgz" id="kvi-qP-TOZ"/>
                         <outlet property="productTableView" destination="Ogr-Dc-AxN" id="30Z-H2-H0L"/>
@@ -498,7 +508,7 @@
                             </scrollView>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cAK-8b-BO0">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <color key="barTintColor" red="1" green="0.42454410120000002" blue="0.68364747879999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="1" green="0.42352941176470588" blue="0.68235294117647061" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textAttributes key="titleTextAttributes">
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </textAttributes>
@@ -539,7 +549,7 @@
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CjM-V5-lYS">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <color key="backgroundColor" red="1" green="0.42454410120000002" blue="0.68364747879999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="barTintColor" red="1" green="0.42454410120000002" blue="0.68364747879999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="1" green="0.42352941176470588" blue="0.68235294117647061" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textAttributes key="titleTextAttributes">
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </textAttributes>
@@ -799,56 +809,67 @@
                                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Syi-Uh-UR5">
                                             <rect key="frame" x="8" y="9" width="304" height="393"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="md0-eu-FYf">
-                                                    <rect key="frame" x="0.0" y="354" width="152" height="40"/>
-                                                    <color key="backgroundColor" red="1" green="0.42352941179999998" blue="0.68235294120000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <state key="normal" title="Comment">
-                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="renata.png" translatesAutoresizingMaskIntoConstraints="NO" id="TPB-rW-a2D">
+                                                    <rect key="frame" x="5" y="54" width="294" height="294"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Glam Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yiT-FG-tpJ">
+                                                    <rect key="frame" x="0.0" y="287" width="304" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="md0-eu-FYf">
+                                                    <rect key="frame" x="15" y="358" width="75" height="30"/>
+                                                    <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    <state key="normal" title="0" image="eye.png">
+                                                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <connections>
-                                                        <action selector="commentButton:" destination="XfZ-yh-puH" eventType="touchUpInside" id="hQg-GI-gN8"/>
-                                                        <segue destination="HkS-l0-x4P" kind="modal" id="DqL-TY-xfw"/>
-                                                    </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mha-1T-7sO" customClass="FavoriteButton">
-                                                    <rect key="frame" x="152" y="354" width="152" height="40"/>
-                                                    <color key="backgroundColor" red="1" green="0.42352941179999998" blue="0.68235294120000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <state key="normal" title="Favorite">
-                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mha-1T-7sO" customClass="FavoriteButton">
+                                                    <rect key="frame" x="221" y="358" width="75" height="30"/>
+                                                    <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    <state key="normal" title="0" image="heart-7.png">
+                                                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <state key="selected" image="heart-selected.png"/>
                                                     <connections>
                                                         <action selector="favoriteAction:" destination="L6e-jQ-GWL" eventType="touchUpInside" id="tzE-BV-Nb6"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Glam Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yiT-FG-tpJ">
-                                                    <rect key="frame" x="0.0" y="314" width="304" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g1Z-l7-ASz" customClass="FavoriteButton">
+                                                    <rect key="frame" x="120" y="358" width="75" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    <state key="normal" title="0" image="message-7.png">
+                                                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="selected" image="message-selected.png"/>
+                                                    <connections>
+                                                        <action selector="commentAction:" destination="L6e-jQ-GWL" eventType="touchUpInside" id="8IE-yF-LR2"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FfR-1Q-IO6">
+                                            <rect key="frame" x="8" y="7" width="304" height="50"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="person2-512.png" translatesAutoresizingMaskIntoConstraints="NO" id="tFQ-fY-a4V">
+                                                    <rect key="frame" x="8" y="5" width="40" height="40"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTY-kl-QZU">
+                                                    <rect key="frame" x="66" y="4" width="230" height="41"/>
+                                                    <color key="tintColor" red="1" green="0.42454410120000002" blue="0.68364747879999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="renata.png" translatesAutoresizingMaskIntoConstraints="NO" id="TPB-rW-a2D">
-                                                    <rect key="frame" x="0.0" y="60" width="304" height="246"/>
-                                                </imageView>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FfR-1Q-IO6">
-                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="60"/>
-                                                    <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="person2-512.png" translatesAutoresizingMaskIntoConstraints="NO" id="tFQ-fY-a4V">
-                                                            <rect key="frame" x="8" y="5" width="50" height="50"/>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTY-kl-QZU">
-                                                            <rect key="frame" x="66" y="7" width="230" height="21"/>
-                                                            <color key="tintColor" red="1" green="0.42454410120000002" blue="0.68364747879999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                            <color key="textColor" red="1" green="0.42352941179999998" blue="0.68235294120000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </view>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="1" green="0.36470588235294116" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </view>
                                     </subviews>
                                     <constraints>
@@ -859,9 +880,11 @@
                                         <constraint firstItem="Syi-Uh-UR5" firstAttribute="trailing" secondItem="GdD-Dc-kBd" secondAttribute="trailingMargin" id="ZNy-hF-SZq"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="1" green="0.72941176470000002" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
+                                    <outlet property="cardView" destination="Syi-Uh-UR5" id="ksC-wv-WxA"/>
+                                    <outlet property="commentButton" destination="g1Z-l7-ASz" id="HBi-at-WKt"/>
                                     <outlet property="favoriteButton" destination="Mha-1T-7sO" id="I9D-2V-GlW"/>
                                     <outlet property="glamImage" destination="TPB-rW-a2D" id="stH-69-LQc"/>
                                     <outlet property="glamName" destination="yiT-FG-tpJ" id="hYa-x3-6XW"/>
@@ -883,12 +906,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d0v-aQ-wn1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1120" y="-140"/>
+            <point key="canvasLocation" x="1120" y="-150"/>
         </scene>
         <!--Comment View Controller-->
         <scene sceneID="XSo-bE-WGt">
             <objects>
-                <viewController id="HkS-l0-x4P" customClass="CommentViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="commentViewController" id="HkS-l0-x4P" customClass="CommentViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mqg-4d-7dq"/>
                         <viewControllerLayoutGuide type="bottom" id="Jwk-Gh-TyS"/>
@@ -901,6 +924,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <items>
                                     <navigationItem title="Comment" id="Cy8-Yy-yDQ">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Pjl-Kx-NlS">
+                                            <connections>
+                                                <action selector="commentCancel:" destination="HkS-l0-x4P" id="gcM-2J-tbm"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Done" id="0pW-m2-9M3">
                                             <connections>
                                                 <action selector="commentDone:" destination="HkS-l0-x4P" id="MLx-bS-DVT"/>
@@ -918,6 +946,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="commentText" destination="BFR-QM-2k9" id="e3v-n5-AKv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WGQ-fV-PNR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -955,7 +986,7 @@
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q6g-So-gab">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <color key="barTintColor" red="1" green="0.42454410120000002" blue="0.68364747879999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="1" green="0.42352941176470588" blue="0.68235294117647061" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textAttributes key="titleTextAttributes">
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </textAttributes>
@@ -995,10 +1026,15 @@
         <image name="background.jpg" width="1000" height="1000"/>
         <image name="circle-user-7.png" width="30" height="30"/>
         <image name="clock-7.png" width="30" height="30"/>
+        <image name="eye.png" width="30" height="30"/>
         <image name="gear-7.png" width="30" height="30"/>
         <image name="glamifylogo.png" width="944" height="257"/>
+        <image name="heart-7.png" width="30" height="30"/>
+        <image name="heart-selected.png" width="30" height="30"/>
         <image name="imagepicker.png" width="500" height="400"/>
         <image name="layout-arrange-09-7.png" width="29" height="30"/>
+        <image name="message-7.png" width="30" height="30"/>
+        <image name="message-selected.png" width="30" height="30"/>
         <image name="person2-512.png" width="481" height="512"/>
         <image name="pin-map-7.png" width="30" height="30"/>
         <image name="plus-simple-7.png" width="30" height="30"/>
@@ -1009,5 +1045,5 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <color key="tintColor" red="1" green="0.42454410120000002" blue="0.68364747879999999" alpha="1" colorSpace="calibratedRGB"/>
+    <color key="tintColor" red="0.69803921568627447" green="0.38823529411764707" blue="0.51372549019607838" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

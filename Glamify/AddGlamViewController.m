@@ -19,7 +19,7 @@
 
 @implementation AddGlamViewController;
 
-@synthesize productTableView, glamNameText, glamImage, category;
+@synthesize productTableView, glamNameText, glamImage, category, glamCategory;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,6 +34,12 @@
     [category setDataSource:self];
     
     data = [[NSArray alloc] initWithObjects:@"Makeup", @"Hair", @"Outfit", @"Nails", nil];
+    
+    UIPickerView *picker = [[UIPickerView alloc] init];
+    self.glamCategory.inputView = picker;
+    
+    picker.dataSource = self;
+    picker.delegate = self;
     
 }
 
@@ -50,6 +56,14 @@
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     return [data objectAtIndex:row];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    
+    self.glamCategory.text = [data objectAtIndex:row];
+    [self.glamCategory resignFirstResponder];
+    
 }
 
 - (void)galleryImage

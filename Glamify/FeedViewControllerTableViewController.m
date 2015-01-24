@@ -9,6 +9,7 @@
 #import "FeedViewControllerTableViewController.h"
 #import "Glam.h"
 #import "CustomCell.h"
+#import "UIImage+Resize.h"
 
 @interface FeedViewControllerTableViewController ()
 {
@@ -134,9 +135,12 @@
             if (!error) {
 
                 UIImage *glamImage = [UIImage imageWithData:data];
+                
+                UIImage *resized = [glamImage resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(294.0, 294.0) interpolationQuality:kCGInterpolationHigh];
+                
                 UIImage *posterImage = [UIImage imageWithData:posterData];
 
-                [cell setLabel:glamName andImage:glamImage andPostersImage:posterImage andPostersName:posterName];
+                [cell setLabel:glamName andImage:resized andPostersImage:posterImage andPostersName:posterName];
                 [cell assignGlam:newGlam];
 
             } else {
@@ -199,6 +203,4 @@
 }
 */
 
-- (IBAction)commentButton:(id)sender {
-}
 @end
