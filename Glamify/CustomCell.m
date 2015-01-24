@@ -94,8 +94,8 @@
     PFQuery *activityQuery = [PFQuery queryWithClassName:@"Activity"];
     
     [activityQuery whereKey:@"glam" equalTo:glam];
-    [activityQuery whereKey:@"toUser" equalTo:glamToAssign.user];
-    [activityQuery whereKey:@"fromUser" equalTo:[PFUser currentUser]];
+//    [activityQuery whereKey:@"toUser" equalTo:glamToAssign.user];
+//    [activityQuery whereKey:@"fromUser" equalTo:[PFUser currentUser]];
     
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     
@@ -103,22 +103,57 @@
        
         if (!error) {
             
+            NSLog(@"%@", objects);
+            
             if ([objects count] > 0) {
                 
-                [favoriteButton setSelected:YES];
+                int favCount = 0;
+                int commentCount = 0;
                 
-                NSNumber *favCount = [NSNumber numberWithInteger:[objects count]];
+                for (PFObject *obj in objects) {
+                    
+                    if ([obj[@"type"] isEqualToString:@"favorite"]) {
+                        
+                        favCount++;
+                        
+                    } else if ([obj[@"type"] isEqualToString:@"comment"]) {
+                        
+                        commentCount++;
+                        
+                    }
+                    
+                }
                 
+                if (commentCount > 0) {
+                    
+                    [commentButton setSelected:YES];
+                    
+                    [commentButton setTitle:[numberFormatter stringFromNumber:[NSNumber numberWithInt:commentCount]] forState:UIControlStateSelected];
+                    
+                } else {
+                    
+                    [commentButton setSelected:NO];
+                    
+                    [commentButton setTitle:[numberFormatter stringFromNumber:[NSNumber numberWithInt:commentCount]] forState:UIControlStateNormal];
+                    
+                }
                 
-                [favoriteButton setTitle:[numberFormatter stringFromNumber:favCount] forState:UIControlStateSelected];
+                if (favCount > 0) {
+                    
+                    [favoriteButton setSelected:YES];
+                    
+                    [favoriteButton setTitle:[numberFormatter stringFromNumber:[NSNumber numberWithInt:favCount]] forState:UIControlStateSelected];
+                    
+                } else {
+                    
+                    [favoriteButton setSelected:NO];
+                    NSNumber *favCount = [NSNumber numberWithInteger:[objects count]];
+                    
+                    
+                    [favoriteButton setTitle:[numberFormatter stringFromNumber:[NSNumber numberWithInt:favCount]] forState:UIControlStateNormal];
+                    
+                }
                 
-            } else {
-                
-                [favoriteButton setSelected:NO];
-                NSNumber *favCount = [NSNumber numberWithInteger:[objects count]];
-                
-                
-                [favoriteButton setTitle:[numberFormatter stringFromNumber:favCount] forState:UIControlStateNormal];
             }
             
         } else {

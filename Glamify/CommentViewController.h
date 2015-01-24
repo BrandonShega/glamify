@@ -21,6 +21,7 @@
 
 @property (nonatomic, weak) id<commentDelegate> delegate;
 @property (nonatomic, weak) NSString *commentString;
-@property (weak, nonatomic) IBOutlet UITextView *commentText;
+@property (weak, nonatomic) IBOutlet UITextField *commentText;
+
 
 @end
