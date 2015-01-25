@@ -15,7 +15,6 @@
     NSArray *data;
 }
 
-- (IBAction)addProductButton:(id)sender;
 - (IBAction)saveGlamButton:(id)sender;
 - (IBAction)addImageButton:(id)sender;
 

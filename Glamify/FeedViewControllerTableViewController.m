@@ -10,6 +10,7 @@
 #import "Glam.h"
 #import "CustomCell.h"
 #import "UIImage+Resize.h"
+#import "ProfileViewController.h"
 
 @interface FeedViewControllerTableViewController ()
 {
@@ -22,7 +23,7 @@
 
 @implementation FeedViewControllerTableViewController
 
-@synthesize feedTableView;
+@synthesize feedTableView, glamId;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,6 +36,10 @@
     
     [feedTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:1.00 green:0.36 blue:0.47 alpha:1.0];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,33 +51,57 @@
 {
     [super viewWillAppear:animated];
     
-    PFQuery *followQuery = [PFQuery queryWithClassName:@"Activity"];
-    
-    [followQuery whereKey:@"fromUser" equalTo:[PFUser currentUser]];
-    [followQuery whereKey:@"type" equalTo:@"follow"];
-    
-    PFQuery *glamQuery = [PFQuery queryWithClassName:@"Glam"];
-    
-    [glamQuery whereKey:@"user" matchesKey:@"toUser" inQuery:followQuery];
-    [glamQuery addDescendingOrder:@"createdAt"];
-
-    [glamQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-
-        if (!error) {
-
-            glamArray = [NSMutableArray arrayWithArray:objects];
+    if (glamId) {
+        
+        PFQuery *glamQuery = [PFQuery queryWithClassName:@"Glam"];
+        
+        [glamQuery whereKey:@"objectId" equalTo:glamId];
+        
+        [glamQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             
-            NSLog(@"ARRAY FOR FEED: %@", glamArray);
-
-            [self.feedTableView reloadData];
-
-        } else {
-
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-
-        }
-
-    }];
+            if (!error) {
+                
+                glamArray = [NSMutableArray arrayWithArray:objects];
+                
+                [self.feedTableView reloadData];
+                
+            } else {
+                
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+                
+            }
+            
+        }];
+        
+    } else {
+        
+        PFQuery *followQuery = [PFQuery queryWithClassName:@"Activity"];
+        
+        [followQuery whereKey:@"fromUser" equalTo:[PFUser currentUser]];
+        [followQuery whereKey:@"type" equalTo:@"follow"];
+        
+        PFQuery *glamQuery = [PFQuery queryWithClassName:@"Glam"];
+        
+        [glamQuery whereKey:@"user" matchesKey:@"toUser" inQuery:followQuery];
+        [glamQuery addDescendingOrder:@"createdAt"];
+        
+        [glamQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            
+            if (!error) {
+                
+                glamArray = [NSMutableArray arrayWithArray:objects];
+                
+                [self.feedTableView reloadData];
+                
+            } else {
+                
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+                
+            }
+            
+        }];
+        
+    }
 
 }
 
@@ -111,15 +140,43 @@
         
         PFUser *user = [glam objectForKey:@"user"];
         
+//        __block NSString *firstName;
+//        __block NSString *lastName;
+//        __block PFFile *posterFile;
+        
         [user fetchIfNeeded];
         
         NSString *firstName = (user[@"firstName"] == nil) ? @"" : user[@"firstName"];
         NSString *lastName = (user[@"lastName"] == nil) ? @"" : user[@"lastName"];
+        PFFile *posterFile = user[@"image"];
+        
+//        [user fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+//            
+//            firstName = (object[@"firstName"] == nil) ? @"" : object[@"firstName"];
+//            lastName = (object[@"lastName"] == nil) ? @"" : object[@"lastName"];
+//            posterFile = object[@"image"];
+//            
+//        }];
         
         NSString *posterName = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
         
-        PFFile *posterFile = [user objectForKey:@"image"];
+        //__block NSData *posterData;
+        
         NSData *posterData = [posterFile getData];
+        
+//        [posterFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+//            
+//            if (!error) {
+//                
+//                posterData = data;
+//                
+//            } else {
+//                
+//                NSLog(@"Error: %@ %@", error, [error userInfo]);
+//                
+//            }
+//            
+//        }];
         
         PFFile *imageFile = [glam objectForKey:@"imageFile"];
         
@@ -151,11 +208,44 @@
 
 
         }];
-
+        
+        
+        //setup touch gesture for header view
+        
+        UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
+        [cell.headerView addGestureRecognizer:singleFingerTap];
+        cell.headerView.tag = indexPath.row;
         
     }
     
     return cell;
+}
+
+- (void)singleTap:(UIGestureRecognizer *)recognizer
+{
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    ProfileViewController *pvc = [storyboard instantiateViewControllerWithIdentifier:@"profileViewController"];
+    
+    PFObject *glam = [glamArray objectAtIndex:recognizer.view.tag];
+    
+    PFUser *userId = glam[@"user"];
+    
+    [userId fetchIfNeeded];
+    
+    NSString *firstName = (userId[@"firstName"] == nil) ? @"" : userId[@"firstName"];
+    NSString *lastName = (userId[@"lastName"] == nil) ? @"" : userId[@"lastName"];
+    
+    NSString *name = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+    
+    pvc.navigationItem.title = name;
+    pvc.navBar.hidden = YES;
+
+    pvc.user = userId;
+    
+    [self.navigationController pushViewController:pvc animated:YES];
+    
 }
 
 

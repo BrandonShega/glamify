@@ -217,7 +217,7 @@
     PFUser *currentUser = [PFUser currentUser];
     UIImage *currentImage = [self.glamImage imageForState:UIControlStateNormal];
     
-    UIImage *resized =  [currentImage resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(560.0f, 560.0f) interpolationQuality:kCGInterpolationHigh];
+    //UIImage *resized =  [currentImage resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(560.0f, 560.0f) interpolationQuality:kCGInterpolationHigh];
     
     NSData *imageData = UIImageJPEGRepresentation(currentImage, 0.05f);
     

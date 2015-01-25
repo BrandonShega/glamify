@@ -9,6 +9,7 @@
 #import "DiscoverViewController.h"
 #import "Glam.h"
 #import "DiscoverDetailViewController.h"
+#import "FeedViewControllerTableViewController.h"
 
 @interface DiscoverViewController () <UISearchBarDelegate>
 {
@@ -128,11 +129,11 @@
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
-    DiscoverDetailViewController *ddvc = [storyboard instantiateViewControllerWithIdentifier:@"DiscoverDetail"];
+    FeedViewControllerTableViewController *fvc = [storyboard instantiateViewControllerWithIdentifier:@"feedViewController"];
     
-    ddvc.glamId = sender.glamid;
+    fvc.glamId = sender.glamid;
     
-    [self presentViewController:ddvc animated:YES completion:nil];
+    [self.navigationController pushViewController:fvc animated:YES];
     
 }
 
@@ -145,11 +146,11 @@
             
             PFFile *imageFile = [object objectForKey:@"imageFile"];
 
-            NSData *imageData = [imageFile getData];
+            NSData *data = [imageFile getData];
             
             Glam *glam = [[Glam alloc] init];
             
-            glam.image = imageData;
+            glam.image = data;
             glam.glamId = [object objectId];
             
             [imageArray addObject:glam];

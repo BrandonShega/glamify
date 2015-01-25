@@ -13,4 +13,6 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *feedTableView;
 
+@property (weak, nonatomic) NSString *glamId;
+
 @end

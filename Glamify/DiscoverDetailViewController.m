@@ -46,49 +46,6 @@
 
     [super viewWillAppear:animated];
 
-    PFQuery *query = [PFQuery queryWithClassName:@"Glam"];
-    [query whereKey:@"objectId" equalTo:self.glamId];
-
-    PFObject *object = [query getFirstObject];
-
-    PFFile *imageFile = [object objectForKey:@"imageFile"];
-    postingUser = [object objectForKey:@"user"];
-    NSData *imageData = [imageFile getData];
-    UIImage *image = [UIImage imageWithData:imageData];
-
-    imageView.image = image;
-    glamName.text = [object objectForKey:@"name"];
-
-    PFQuery *following = [PFQuery queryWithClassName:@"Activity"];
-    [following whereKey:@"type" equalTo:@"follow"];
-
-    //PFQuery *fromUs = [PFQuery queryWithClassName:@"Activity"];
-    [following whereKey:@"fromUser" equalTo:[PFUser currentUser]];
-
-    //PFQuery *toPoster = [PFQuery queryWithClassName:@"Activity"];
-    [following whereKey:@"toUser" equalTo:postingUser];
-
-    //PFQuery *activityQuery = [PFQuery orQueryWithSubqueries:@[fromUs, following, toPoster]];
-
-    [following findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-
-        if (!error) {
-
-            if (![objects count] == 0) {
-
-                followButton.hidden = YES;
-                followLabel.hidden = NO;
-
-            }
-
-        } else {
-
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-
-        }
-
-    }];
-
 }
 
 /*
@@ -104,16 +61,7 @@
 - (IBAction)followButton:(id)sender
 {
     
-    PFObject *activity = [PFObject objectWithClassName:@"Activity"];
     
-    [activity setObject:[PFUser currentUser] forKey:@"fromUser"];
-    [activity setObject:postingUser forKey:@"toUser"];
-    [activity setObject:@"follow" forKey:@"type"];
-    
-    [activity save];
-    
-    followButton.hidden = YES;
-    followLabel.hidden = NO;
     
     
 }

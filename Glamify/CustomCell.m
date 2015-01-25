@@ -10,6 +10,8 @@
 #import "Glam.h"
 #import "CommentViewController.h"
 #import "AppDelegate.h"
+#import "ProfileViewController.h"
+#import "AppDelegate.h"
 
 @implementation CustomCell
 
@@ -89,6 +91,7 @@
     PFQuery *glamQuery = [PFQuery queryWithClassName:@"Glam"];
     
     [glamQuery whereKey:@"objectId" equalTo:glamToAssign.glamId];
+    
     PFObject *glam = [glamQuery getFirstObject];
     
     PFQuery *activityQuery = [PFQuery queryWithClassName:@"Activity"];
@@ -147,8 +150,6 @@
                 } else {
                     
                     [favoriteButton setSelected:NO];
-                    NSNumber *favCount = [NSNumber numberWithInteger:[objects count]];
-                    
                     
                     [favoriteButton setTitle:[numberFormatter stringFromNumber:[NSNumber numberWithInt:favCount]] forState:UIControlStateNormal];
                     
