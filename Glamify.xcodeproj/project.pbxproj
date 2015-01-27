@@ -226,6 +226,8 @@
 		C50A22901A3FCC050086872D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C50A228F1A3FCC050086872D /* Images.xcassets */; };
 		C50A22931A3FCC050086872D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C50A22911A3FCC050086872D /* LaunchScreen.xib */; };
 		C50A229F1A3FCC050086872D /* GlamifyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C50A229E1A3FCC050086872D /* GlamifyTests.m */; };
+		C51CB82D1A75A87200A87754 /* glamlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = C51CB82C1A75A87200A87754 /* glamlogo.png */; };
+		C51CB8311A75AAF100A87754 /* glammini.png in Resources */ = {isa = PBXBuildFile; fileRef = C51CB8301A75AAF100A87754 /* glammini.png */; };
 		C53849761A68AC1C00A74A5C /* ProductsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C53849751A68AC1C00A74A5C /* ProductsViewController.m */; };
 		C53F589F1A6380A100527F48 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = C53F589A1A6380A100527F48 /* UIImage+Alpha.m */; };
 		C53F58A01A6380A100527F48 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = C53F589C1A6380A100527F48 /* UIImage+Resize.m */; };
@@ -513,6 +515,8 @@
 		C50A22981A3FCC050086872D /* GlamifyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GlamifyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C50A229D1A3FCC050086872D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C50A229E1A3FCC050086872D /* GlamifyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlamifyTests.m; sourceTree = "<group>"; };
+		C51CB82C1A75A87200A87754 /* glamlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glamlogo.png; sourceTree = "<group>"; };
+		C51CB8301A75AAF100A87754 /* glammini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glammini.png; sourceTree = "<group>"; };
 		C53849741A68AC1C00A74A5C /* ProductsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductsViewController.h; sourceTree = "<group>"; };
 		C53849751A68AC1C00A74A5C /* ProductsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductsViewController.m; sourceTree = "<group>"; };
 		C53F58991A6380A100527F48 /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
@@ -938,6 +942,8 @@
 		C59605171A41224A00900245 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				C51CB8301A75AAF100A87754 /* glammini.png */,
+				C51CB82C1A75A87200A87754 /* glamlogo.png */,
 				C56058271A73435700074D5A /* message-selected.png */,
 				C56058251A7341BA00074D5A /* heart-selected.png */,
 				C56058231A73374400074D5A /* eye.png */,
@@ -1071,6 +1077,7 @@
 				C507E9DB1A43AD1900376C3F /* finger-point-top-7.png in Resources */,
 				C507E9E21A43AD1900376C3F /* football-7.png in Resources */,
 				C507E9EC1A43AD1900376C3F /* keyboard-7.png in Resources */,
+				C51CB82D1A75A87200A87754 /* glamlogo.png in Resources */,
 				C507E9A41A43AD1900376C3F /* business-bag-7.png in Resources */,
 				C507EA211A43AD1900376C3F /* photos-simple-7.png in Resources */,
 				C507E9971A43AD1900376C3F /* bell-7.png in Resources */,
@@ -1181,6 +1188,7 @@
 				C507EA291A43AD1900376C3F /* pyramid-7.png in Resources */,
 				C507E9B61A43AD1900376C3F /* cloud-download-7.png in Resources */,
 				C507EA221A43AD1900376C3F /* pie-chart-7.png in Resources */,
+				C51CB8311A75AAF100A87754 /* glammini.png in Resources */,
 				C507EA231A43AD1900376C3F /* pin-map-7.png in Resources */,
 				C507EA471A43AD1900376C3F /* trophy-7.png in Resources */,
 				C507EA3E1A43AD1900376C3F /* tennis-7.png in Resources */,

@@ -233,6 +233,7 @@
     CommentViewController *cvc = [storyboard instantiateViewControllerWithIdentifier:@"commentViewController"];
     
     cvc.delegate = self;
+    cvc.glamId = sender.glamId;
     
     [appDelegate.window.rootViewController presentViewController:cvc animated:YES completion:nil];
     

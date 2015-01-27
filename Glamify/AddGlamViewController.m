@@ -33,7 +33,7 @@
     [category setDelegate:self];
     [category setDataSource:self];
     
-    data = [[NSArray alloc] initWithObjects:@"Makeup", @"Hair", @"Outfit", @"Nails", nil];
+    data = [[NSArray alloc] initWithObjects:@"Makeup", @"Hair", @"Outfit", @"Nails", @"Cosmetics", nil];
     
     UIPickerView *picker = [[UIPickerView alloc] init];
     self.glamCategory.inputView = picker;

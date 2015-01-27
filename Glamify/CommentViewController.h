@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @protocol commentDelegate <NSObject>
 
@@ -22,6 +23,8 @@
 @property (nonatomic, weak) id<commentDelegate> delegate;
 @property (nonatomic, weak) NSString *commentString;
 @property (weak, nonatomic) IBOutlet UITextField *commentText;
+@property (weak, nonatomic) IBOutlet UITableView *commentTable;
 
+@property (weak, nonatomic) NSString *glamId;
 
 @end

@@ -40,6 +40,8 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
     
+    //[[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"glammini.png"] forBarMetrics:UIBarMetricsDefault];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -182,9 +184,9 @@
         
         Glam *newGlam = [[Glam alloc] init];
         
-        NSString *glamId = [glam objectId];
+        NSString *glamID = [glam objectId];
         
-        newGlam.glamId = glamId;
+        newGlam.glamId = glamID;
         newGlam.user = user;
         
         [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {

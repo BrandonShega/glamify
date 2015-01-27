@@ -25,7 +25,7 @@
 #define NUMBER_OF_COLUMNS 4
 #define PADDING 4
 
-@synthesize photoView, discoverSearch;
+@synthesize photoView, discoverSearch, searchType;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,6 +33,9 @@
     
     [discoverSearch setDelegate:self];
     
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:1.00 green:0.36 blue:0.47 alpha:1.0];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
     
     //glamArray = [[NSMutableArray alloc] init];
 }
@@ -53,30 +56,78 @@
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
     
-    if ([searchText length] > 3) {
+    if ([searchText length] > 1) {
         
         NSArray *viewsToRemove = [photoView subviews];
         
         for (UIView *v in viewsToRemove) {
             [v removeFromSuperview];
         }
-     
-        PFQuery *query = [PFQuery queryWithClassName:@"Glam"];
         
-        [query whereKey:@"category" containsString:searchText];
-        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            
-            if (!error) {
+        switch (searchType.selectedSegmentIndex) {
                 
-                [self loadImages:objects];
+            case 0: {
                 
-            } else {
+                PFQuery *query= [PFQuery queryWithClassName:@"Glam"];
                 
-                NSLog(@"Error: %@ %@", error, [error userInfo]);
+                [query whereKey:@"category" containsString:searchText];
+                
+                [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                    
+                    if (!error) {
+                        
+                        [self loadImages:objects];
+                        
+                    } else {
+                        
+                        NSLog(@"Error: %@ %@", error, [error userInfo]);
+                        
+                    }
+                    
+                }];
                 
             }
-            
-        }];
+                
+                break;
+                
+            case 1: {
+                
+                __block NSArray *searchGlams = [[NSArray alloc] init];
+                
+                PFQuery *nameQuery = [PFUser query];
+                
+                [nameQuery whereKey:@"name" containsString:searchText];
+                
+                [nameQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                   
+                    if (!error) {
+                        
+                        PFQuery *glamQuery = [PFQuery queryWithClassName:@"Glam"];
+                        
+                        [glamQuery whereKey:@"user" containedIn:objects];
+                        
+                        searchGlams = [glamQuery findObjects];
+                        
+                        [self loadImages:searchGlams];
+                        
+                    } else {
+                        
+                        NSLog(@"Error: %@ %@", error, [error userInfo]);
+                        
+                    }
+                    
+                }];
+                
+            }
+    
+                break;
+                
+            default:
+                break;
+                
+        }
+        
+        
         
     } else if ([searchText length] == 0) {
         
@@ -132,6 +183,7 @@
     FeedViewControllerTableViewController *fvc = [storyboard instantiateViewControllerWithIdentifier:@"feedViewController"];
     
     fvc.glamId = sender.glamid;
+    fvc.title = @"Detail";
     
     [self.navigationController pushViewController:fvc animated:YES];
     

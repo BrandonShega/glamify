@@ -21,5 +21,6 @@
 - (void)imageClicked:(GlamButton *)sender;
 
 @property (weak, nonatomic) IBOutlet UISearchBar *discoverSearch;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *searchType;
 
 @end
