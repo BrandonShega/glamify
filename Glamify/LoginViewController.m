@@ -16,7 +16,7 @@
 
 @implementation LoginViewController
 
-@synthesize userText, passwordText;
+@synthesize userText, passwordText, loginButton;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -95,4 +95,22 @@
     }];
     
 }
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    
+    if ([textField isEqual:userText]) {
+        
+        [passwordText becomeFirstResponder];
+        
+    } else if ([textField isEqual:passwordText]) {
+        
+        [loginButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+        
+    }
+    
+    return YES;
+    
+}
+
 @end

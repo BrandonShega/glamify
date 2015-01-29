@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import "GlamButton.h"
+#import <ParseUI/ParseUI.h>
 
 @interface DiscoverViewController : UIViewController
 

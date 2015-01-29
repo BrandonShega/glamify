@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : UIViewController <UITextFieldDelegate>
 {
     
     NSString *username;
@@ -18,6 +18,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *userText;
 @property (weak, nonatomic) IBOutlet UITextField *passwordText;
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
 
 - (IBAction)loginButton:(id)sender;
 - (IBAction)unwindSignupViewController:(UIStoryboardSegue *)unwindSegue;

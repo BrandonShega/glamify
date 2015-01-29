@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import <Parse/Parse.h>
+#import <ParseUI/ParseUI.h>
 
 @interface ProfileViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIImageView *profileImage;
+@property (weak, nonatomic) IBOutlet PFImageView *profileImage;
 - (IBAction)settingsButton:(id)sender;
 @property (weak, nonatomic) IBOutlet UIScrollView *glamScrollView;
 
@@ -25,7 +26,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *commentCounter;
 @property (weak, nonatomic) IBOutlet UILabel *glamCounter;
 @property (weak, nonatomic) IBOutlet UIButton *followButton;
-@property (weak, nonatomic) IBOutlet UILabel *followLabel;
 
 - (IBAction)followUser:(id)sender;
 @end

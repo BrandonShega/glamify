@@ -25,6 +25,7 @@
 @property (weak, nonatomic) NSData *image;
 @property (weak, nonatomic) NSData *thumbnail;
 @property (weak, nonatomic) NSData *posterImage;
+@property (weak, nonatomic) PFFile *glamImageFile;
 
 - (void)saveGlam;
 

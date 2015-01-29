@@ -8,7 +8,6 @@
 
 #import "DiscoverViewController.h"
 #import "Glam.h"
-#import "DiscoverDetailViewController.h"
 #import "FeedViewControllerTableViewController.h"
 
 @interface DiscoverViewController () <UISearchBarDelegate>

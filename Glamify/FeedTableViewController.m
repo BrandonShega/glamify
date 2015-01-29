@@ -21,7 +21,7 @@
 
 @implementation FeedTableViewController
 
-@synthesize glamId;
+@synthesize glamId, reloadOnAppear;
 
 - (id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
@@ -35,7 +35,7 @@
         self.textKey = @"name";
         
         // Uncomment the following line to specify the key of a PFFile on the PFObject to display in the imageView of the default cell style
-         self.imageKey = @"imageFile";
+         //self.imageKey = @"imageFile";
         
         // Whether the built-in pull-to-refresh is enabled
         self.pullToRefreshEnabled = YES;
@@ -45,6 +45,8 @@
         
         // The number of objects to show per page
         self.objectsPerPage = 25;
+        
+        self.reloadOnAppear = YES;
     }
     return self;
 }
@@ -94,8 +96,6 @@
     
     [super objectsDidLoad:error];
     
-    NSLog(@"%@", self.objects);
-    
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -126,6 +126,7 @@
         query = [PFQuery queryWithClassName:@"Glam"];
         
         [query whereKey:@"objectId" equalTo:glamId];
+        [query includeKey:@"user"];
         
     } else {
         
@@ -137,6 +138,7 @@
         query = [PFQuery queryWithClassName:@"Glam"];
         
         [query whereKey:@"user" matchesKey:@"toUser" inQuery:followQuery];
+        [query includeKey:@"user"];
         [query addDescendingOrder:@"createdAt"];
         
     }
@@ -145,7 +147,63 @@
     
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object
+//{
+//    
+//    
+//    static NSString *cellIdentifier = @"Cell";
+//    
+//    __block NSString *firstName;
+//    __block NSString *lastName;
+//    __block NSString *posterName;
+//    __block PFFile *posterFile;
+//    
+//    CustomCell *cell = (CustomCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+//    
+//    if (cell != nil) {
+//        
+//        NSLog(@"%@", [object objectForKey:@"name"]);
+//        
+//        PFObject *glam = [self.objects objectAtIndex:indexPath.row];
+//        
+//        NSString *glamName = [glam objectForKey:@"name"];
+//        
+//        PFUser *user = [glam objectForKey:@"user"];
+//        
+//        [user fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+//            
+//            firstName = (object[@"firstName"] == nil) ? @"" : object[@"firstName"];
+//            lastName = (object[@"lastName"] == nil) ? @"" : object[@"lastName"];
+//            posterFile = object[@"image"];
+//            
+//            posterName = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+//            
+//        }];
+//        
+//        Glam *newGlam = [[Glam alloc] init];
+//        
+//        NSString *glamID = [glam objectId];
+//        
+//        newGlam.glamId = glamID;
+//        newGlam.user = user;
+//        
+//        //[cell setLabel:glamName andImage:imageFile andPostersImage:posterFile andPostersName:posterName];
+//        PFFile *imageFile = object[@"imageFile"];
+//        
+//        [cell setLabel:glamName andImage:imageFile andPostersImage:posterFile andPostersName:posterName];
+//        
+//        //setup touch gesture for header view
+//        UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
+//        [cell.headerView addGestureRecognizer:singleFingerTap];
+//        cell.headerView.tag = indexPath.row;
+//        
+//    }
+//    
+//    return cell;
+//    
+//}
+
+- (PFTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object
 {
     
     
@@ -155,47 +213,32 @@
     
     if (cell != nil) {
         
-        NSLog(@"%@", [object objectForKey:@"name"]);
+        [[cell glamName] setText:[object objectForKey:@"name"]];
         
-        PFObject *glam = [self.objects objectAtIndex:indexPath.row];
-        
-        NSString *glamName = [glam objectForKey:@"name"];
-        
-        PFUser *user = [glam objectForKey:@"user"];
-        
-        [user fetchIfNeeded];
+        PFUser *user = [object objectForKey:@"user"];
         
         NSString *firstName = (user[@"firstName"] == nil) ? @"" : user[@"firstName"];
         NSString *lastName = (user[@"lastName"] == nil) ? @"" : user[@"lastName"];
-        PFFile *posterFile = user[@"image"];
-        
         NSString *posterName = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
         
-        //PFFile *imageFile = [glam objectForKey:@"imageFile"];
+        [[cell postersName] setText:posterName];
+        
+        // Load glam image
+        cell.glamImage.file = [object objectForKey:@"imageFile"];
+        [cell.glamImage loadInBackground];
+        
+        // Load poster image
+        cell.postersImage.file = user[@"image"];
+        [cell.postersImage loadInBackground];
+        
         
         Glam *newGlam = [[Glam alloc] init];
-        
-        NSString *glamID = [glam objectId];
-        
+        NSString *glamID = [object objectId];
         newGlam.glamId = glamID;
         newGlam.user = user;
-        
-        //[cell setLabel:glamName andImage:imageFile andPostersImage:posterFile andPostersName:posterName];
-        PFFile *imageFile = [object objectForKey:self.imageKey];
-        [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-           
-            if (!error) {
-                
-                [cell setLabel:glamName andImage:[UIImage imageWithData:data] andPostersImage:[UIImage imageWithData:data] andPostersName:posterName];
-                
-            }
-            
-        }];
-        
         [cell assignGlam:newGlam];
         
         //setup touch gesture for header view
-        
         UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
         [cell.headerView addGestureRecognizer:singleFingerTap];
         cell.headerView.tag = indexPath.row;
@@ -217,7 +260,7 @@
     
     PFUser *userId = glam[@"user"];
     
-    [userId fetchIfNeeded];
+    [userId fetchIfNeededInBackground];
     
     NSString *firstName = (userId[@"firstName"] == nil) ? @"" : userId[@"firstName"];
     NSString *lastName = (userId[@"lastName"] == nil) ? @"" : userId[@"lastName"];

@@ -219,7 +219,6 @@
 		C507EA7E1A43DBB800376C3F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C507EA7D1A43DBB800376C3F /* ProfileViewController.m */; };
 		C507EA811A43DEBF00376C3F /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C507EA801A43DEBF00376C3F /* SettingsViewController.m */; };
 		C507EA841A43E25B00376C3F /* AddProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C507EA831A43E25B00376C3F /* AddProductViewController.m */; };
-		C50869F11A6208FC00C31885 /* DiscoverDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C50869F01A6208FC00C31885 /* DiscoverDetailViewController.m */; };
 		C50A22851A3FCC050086872D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C50A22841A3FCC050086872D /* main.m */; };
 		C50A22881A3FCC050086872D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C50A22871A3FCC050086872D /* AppDelegate.m */; };
 		C50A228E1A3FCC050086872D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C50A228C1A3FCC050086872D /* Main.storyboard */; };
@@ -503,8 +502,6 @@
 		C507EA801A43DEBF00376C3F /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		C507EA821A43E25B00376C3F /* AddProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddProductViewController.h; sourceTree = "<group>"; };
 		C507EA831A43E25B00376C3F /* AddProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddProductViewController.m; sourceTree = "<group>"; };
-		C50869EF1A6208FC00C31885 /* DiscoverDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverDetailViewController.h; sourceTree = "<group>"; };
-		C50869F01A6208FC00C31885 /* DiscoverDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverDetailViewController.m; sourceTree = "<group>"; };
 		C50A227F1A3FCC050086872D /* Glamify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Glamify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C50A22831A3FCC050086872D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C50A22841A3FCC050086872D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -847,11 +844,13 @@
 		C50A22811A3FCC050086872D /* Glamify */ = {
 			isa = PBXGroup;
 			children = (
-				C507EA561A43B0C900376C3F /* renata.png */,
-				C507EA581A43B0E900376C3F /* Glam.h */,
-				C507EA591A43B0E900376C3F /* Glam.m */,
-				C59605211A41360300900245 /* StyleKit.h */,
-				C59605221A41360300900245 /* StyleKit.m */,
+				C59F6F3E1A79D52F00D6F9E5 /* Signup Screen */,
+				C59F6F3D1A79D52500D6F9E5 /* Login Screen */,
+				C59F6F3C1A79D50B00D6F9E5 /* Profile Screen */,
+				C59F6F3B1A79D4F800D6F9E5 /* Activity Screen */,
+				C59F6F3A1A79D4DA00D6F9E5 /* Add A Glam Screen */,
+				C59F6F391A79D4C900D6F9E5 /* Discover Screen */,
+				C59F6F381A79D49100D6F9E5 /* Feed Screen */,
 				C59605171A41224A00900245 /* Assets */,
 				C50A22861A3FCC050086872D /* AppDelegate.h */,
 				C50A22871A3FCC050086872D /* AppDelegate.m */,
@@ -859,50 +858,8 @@
 				C50A228F1A3FCC050086872D /* Images.xcassets */,
 				C50A22911A3FCC050086872D /* LaunchScreen.xib */,
 				C50A22821A3FCC050086872D /* Supporting Files */,
-				C596051E1A412D5000900245 /* LoginViewController.h */,
-				C596051F1A412D5000900245 /* LoginViewController.m */,
-				C59605241A41361B00900245 /* CustomButton.h */,
-				C59605251A41361B00900245 /* CustomButton.m */,
-				C56B64AA1A4356A1008CA2D4 /* SignUpViewController.h */,
-				C56B64AB1A4356A1008CA2D4 /* SignUpViewController.m */,
 				C56B64B01A437B3A008CA2D4 /* MainViewController.h */,
 				C56B64B11A437B3A008CA2D4 /* MainViewController.m */,
-				C507EA5B1A43B27000376C3F /* FeedViewControllerTableViewController.h */,
-				C507EA5C1A43B27000376C3F /* FeedViewControllerTableViewController.m */,
-				C507EA611A43B2BB00376C3F /* CustomCell.h */,
-				C507EA621A43B2BB00376C3F /* CustomCell.m */,
-				C507EA641A43C5BA00376C3F /* CustomActivityCell.h */,
-				C507EA651A43C5BA00376C3F /* CustomActivityCell.m */,
-				C507EA6A1A43C61100376C3F /* ActivityViewController.h */,
-				C507EA6B1A43C61100376C3F /* ActivityViewController.m */,
-				C507EA6D1A43C62E00376C3F /* Activity.h */,
-				C507EA6E1A43C62E00376C3F /* Activity.m */,
-				C507EA701A43CD0C00376C3F /* AddGlamViewController.h */,
-				C507EA711A43CD0C00376C3F /* AddGlamViewController.m */,
-				C507EA791A43D19300376C3F /* DiscoverCell.h */,
-				C507EA7A1A43D19300376C3F /* DiscoverCell.m */,
-				C507EA7C1A43DBB800376C3F /* ProfileViewController.h */,
-				C507EA7D1A43DBB800376C3F /* ProfileViewController.m */,
-				C507EA7F1A43DEBF00376C3F /* SettingsViewController.h */,
-				C507EA801A43DEBF00376C3F /* SettingsViewController.m */,
-				C507EA821A43E25B00376C3F /* AddProductViewController.h */,
-				C507EA831A43E25B00376C3F /* AddProductViewController.m */,
-				C543D31F1A43E41600A27382 /* CommentViewController.h */,
-				C543D3201A43E41600A27382 /* CommentViewController.m */,
-				C55CC8BF1A5F677100B4845F /* Product.h */,
-				C55CC8C01A5F677100B4845F /* Product.m */,
-				C58859C91A61ECF900CF7346 /* GlamButton.h */,
-				C58859CA1A61ECF900CF7346 /* GlamButton.m */,
-				C58859CC1A61EEDA00CF7346 /* DiscoverViewController.h */,
-				C58859CD1A61EEDA00CF7346 /* DiscoverViewController.m */,
-				C50869EF1A6208FC00C31885 /* DiscoverDetailViewController.h */,
-				C50869F01A6208FC00C31885 /* DiscoverDetailViewController.m */,
-				C53849741A68AC1C00A74A5C /* ProductsViewController.h */,
-				C53849751A68AC1C00A74A5C /* ProductsViewController.m */,
-				C5588DFC1A68BEAB00CF31F8 /* FavoriteButton.h */,
-				C5588DFD1A68BEAB00CF31F8 /* FavoriteButton.m */,
-				C59F6F351A79A5EB00D6F9E5 /* FeedTableViewController.h */,
-				C59F6F361A79A5EB00D6F9E5 /* FeedTableViewController.m */,
 			);
 			path = Glamify;
 			sourceTree = "<group>";
@@ -947,6 +904,9 @@
 		C59605171A41224A00900245 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				C59605211A41360300900245 /* StyleKit.h */,
+				C59605221A41360300900245 /* StyleKit.m */,
+				C507EA561A43B0C900376C3F /* renata.png */,
 				C51CB8301A75AAF100A87754 /* glammini.png */,
 				C51CB82C1A75A87200A87754 /* glamlogo.png */,
 				C56058271A73435700074D5A /* message-selected.png */,
@@ -960,6 +920,97 @@
 				C59605181A41226000900245 /* background.jpg */,
 			);
 			name = Assets;
+			sourceTree = "<group>";
+		};
+		C59F6F381A79D49100D6F9E5 /* Feed Screen */ = {
+			isa = PBXGroup;
+			children = (
+				C59605241A41361B00900245 /* CustomButton.h */,
+				C59605251A41361B00900245 /* CustomButton.m */,
+				C507EA581A43B0E900376C3F /* Glam.h */,
+				C507EA591A43B0E900376C3F /* Glam.m */,
+				C543D31F1A43E41600A27382 /* CommentViewController.h */,
+				C543D3201A43E41600A27382 /* CommentViewController.m */,
+				C58859C91A61ECF900CF7346 /* GlamButton.h */,
+				C58859CA1A61ECF900CF7346 /* GlamButton.m */,
+				C5588DFC1A68BEAB00CF31F8 /* FavoriteButton.h */,
+				C5588DFD1A68BEAB00CF31F8 /* FavoriteButton.m */,
+				C507EA611A43B2BB00376C3F /* CustomCell.h */,
+				C507EA621A43B2BB00376C3F /* CustomCell.m */,
+				C507EA5B1A43B27000376C3F /* FeedViewControllerTableViewController.h */,
+				C507EA5C1A43B27000376C3F /* FeedViewControllerTableViewController.m */,
+				C59F6F351A79A5EB00D6F9E5 /* FeedTableViewController.h */,
+				C59F6F361A79A5EB00D6F9E5 /* FeedTableViewController.m */,
+			);
+			name = "Feed Screen";
+			sourceTree = "<group>";
+		};
+		C59F6F391A79D4C900D6F9E5 /* Discover Screen */ = {
+			isa = PBXGroup;
+			children = (
+				C507EA791A43D19300376C3F /* DiscoverCell.h */,
+				C507EA7A1A43D19300376C3F /* DiscoverCell.m */,
+				C58859CC1A61EEDA00CF7346 /* DiscoverViewController.h */,
+				C58859CD1A61EEDA00CF7346 /* DiscoverViewController.m */,
+			);
+			name = "Discover Screen";
+			sourceTree = "<group>";
+		};
+		C59F6F3A1A79D4DA00D6F9E5 /* Add A Glam Screen */ = {
+			isa = PBXGroup;
+			children = (
+				C507EA701A43CD0C00376C3F /* AddGlamViewController.h */,
+				C507EA711A43CD0C00376C3F /* AddGlamViewController.m */,
+				C507EA821A43E25B00376C3F /* AddProductViewController.h */,
+				C507EA831A43E25B00376C3F /* AddProductViewController.m */,
+				C55CC8BF1A5F677100B4845F /* Product.h */,
+				C55CC8C01A5F677100B4845F /* Product.m */,
+				C53849741A68AC1C00A74A5C /* ProductsViewController.h */,
+				C53849751A68AC1C00A74A5C /* ProductsViewController.m */,
+			);
+			name = "Add A Glam Screen";
+			sourceTree = "<group>";
+		};
+		C59F6F3B1A79D4F800D6F9E5 /* Activity Screen */ = {
+			isa = PBXGroup;
+			children = (
+				C507EA641A43C5BA00376C3F /* CustomActivityCell.h */,
+				C507EA651A43C5BA00376C3F /* CustomActivityCell.m */,
+				C507EA6A1A43C61100376C3F /* ActivityViewController.h */,
+				C507EA6B1A43C61100376C3F /* ActivityViewController.m */,
+				C507EA6D1A43C62E00376C3F /* Activity.h */,
+				C507EA6E1A43C62E00376C3F /* Activity.m */,
+			);
+			name = "Activity Screen";
+			sourceTree = "<group>";
+		};
+		C59F6F3C1A79D50B00D6F9E5 /* Profile Screen */ = {
+			isa = PBXGroup;
+			children = (
+				C507EA7C1A43DBB800376C3F /* ProfileViewController.h */,
+				C507EA7D1A43DBB800376C3F /* ProfileViewController.m */,
+				C507EA7F1A43DEBF00376C3F /* SettingsViewController.h */,
+				C507EA801A43DEBF00376C3F /* SettingsViewController.m */,
+			);
+			name = "Profile Screen";
+			sourceTree = "<group>";
+		};
+		C59F6F3D1A79D52500D6F9E5 /* Login Screen */ = {
+			isa = PBXGroup;
+			children = (
+				C596051E1A412D5000900245 /* LoginViewController.h */,
+				C596051F1A412D5000900245 /* LoginViewController.m */,
+			);
+			name = "Login Screen";
+			sourceTree = "<group>";
+		};
+		C59F6F3E1A79D52F00D6F9E5 /* Signup Screen */ = {
+			isa = PBXGroup;
+			children = (
+				C56B64AA1A4356A1008CA2D4 /* SignUpViewController.h */,
+				C56B64AB1A4356A1008CA2D4 /* SignUpViewController.m */,
+			);
+			name = "Signup Screen";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1292,7 +1343,6 @@
 				C507EA7E1A43DBB800376C3F /* ProfileViewController.m in Sources */,
 				C59F6F371A79A5EB00D6F9E5 /* FeedTableViewController.m in Sources */,
 				C50A22851A3FCC050086872D /* main.m in Sources */,
-				C50869F11A6208FC00C31885 /* DiscoverDetailViewController.m in Sources */,
 				C507EA841A43E25B00376C3F /* AddProductViewController.m in Sources */,
 				C507EA5D1A43B27000376C3F /* FeedViewControllerTableViewController.m in Sources */,
 				C507EA6C1A43C61100376C3F /* ActivityViewController.m in Sources */,

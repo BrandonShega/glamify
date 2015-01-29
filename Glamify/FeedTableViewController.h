@@ -13,5 +13,6 @@
 @interface FeedTableViewController : PFQueryTableViewController
 
 @property (weak, nonatomic) NSString *glamId;
+@property(nonatomic, assign) BOOL reloadOnAppear;
 
 @end

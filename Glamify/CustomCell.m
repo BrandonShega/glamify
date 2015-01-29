@@ -72,41 +72,28 @@
     // Configure the view for the selected state
 }
 
-- (void)setLabel:(NSString *)nameString andImage:(UIImage *)image andPostersImage:(UIImage *)posterImage andPostersName:(NSString *)posterNameString
-{
-    [glamName setText:nameString];
-    [postersName setText:posterNameString];
-    
-    [glamImage setImage:image];
-    [postersImage setImage:posterImage];
-}
-
 - (void)assignGlam:(Glam *)glamToAssign
 {
+    
+    __block BOOL didIComment = NO;
+    __block BOOL didIFavorite = NO;
+    
     favoriteButton.glamId = glamToAssign.glamId;
     favoriteButton.toUser = glamToAssign.user;
     
     commentButton.glamId = glamToAssign.glamId;
     
     PFQuery *glamQuery = [PFQuery queryWithClassName:@"Glam"];
-    
     [glamQuery whereKey:@"objectId" equalTo:glamToAssign.glamId];
     
-    PFObject *glam = [glamQuery getFirstObject];
-    
     PFQuery *activityQuery = [PFQuery queryWithClassName:@"Activity"];
-    
-    [activityQuery whereKey:@"glam" equalTo:glam];
-//    [activityQuery whereKey:@"toUser" equalTo:glamToAssign.user];
-//    [activityQuery whereKey:@"fromUser" equalTo:[PFUser currentUser]];
+    [activityQuery whereKey:@"glam" matchesKey:@"objectId" inQuery:glamQuery];
     
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     
     [activityQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
        
         if (!error) {
-            
-            NSLog(@"%@", objects);
             
             if ([objects count] > 0) {
                 
@@ -119,15 +106,30 @@
                         
                         favCount++;
                         
+                        NSLog(@"%@", obj[@"fromUser"]);
+                        NSLog(@"%@", [PFUser currentUser]);
+                        
+                        if ([[obj[@"fromUser"] objectId] isEqual:[[PFUser currentUser] objectId]]) {
+                            
+                            didIFavorite = YES;
+                            
+                        }
+                        
                     } else if ([obj[@"type"] isEqualToString:@"comment"]) {
                         
                         commentCount++;
+                        
+                        if ([[obj[@"fromUser"] objectId] isEqual:[[PFUser currentUser] objectId]]) {
+                            
+                            didIComment = YES;
+                            
+                        }
                         
                     }
                     
                 }
                 
-                if (commentCount > 0) {
+                if (didIComment) {
                     
                     [commentButton setSelected:YES];
                     
@@ -141,7 +143,7 @@
                     
                 }
                 
-                if (favCount > 0) {
+                if (didIFavorite) {
                     
                     [favoriteButton setSelected:YES];
                     
@@ -172,6 +174,8 @@
     
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     
+    NSLog(@"%@", sender.titleLabel.text);
+    
     NSNumber *favCount = [formatter numberFromString:sender.titleLabel.text];
     
     if (![favoriteButton isSelected]) {
@@ -180,36 +184,38 @@
         
         PFQuery *query = [PFQuery queryWithClassName:@"Glam"];
         [query whereKey:@"objectId" equalTo:sender.glamId];
-        PFObject *glam = [query getFirstObject];
-        
-        activity[@"type"] = @"favorite";
-        activity[@"toUser"] = sender.toUser;
-        activity[@"fromUser"] = [PFUser currentUser];
-        activity[@"glam"] = glam;
-        
-        [activity save];
+        [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+            
+            activity[@"type"] = @"favorite";
+            activity[@"toUser"] = sender.toUser;
+            activity[@"fromUser"] = [PFUser currentUser];
+            activity[@"glam"] = object;
+            
+            [activity saveEventually];
+            
+        }];
         
         favCount = [NSNumber numberWithInt:[favCount intValue] + 1];
         
         [favoriteButton setSelected:YES];
-        [favoriteButton setTitle:[formatter stringFromNumber:favCount] forState:UIControlStateSelected];
         
     } else {
         
         PFQuery *glamQuery = [PFQuery queryWithClassName:@"Glam"];
         
         [glamQuery whereKey:@"objectId" equalTo:sender.glamId];
-        PFObject *glam = [glamQuery getFirstObject];
         
         PFQuery *activityQuery = [PFQuery queryWithClassName:@"Activity"];
         
-        [activityQuery whereKey:@"glam" equalTo:glam];
+        [activityQuery whereKey:@"glam" matchesKey:@"objectId" inQuery:glamQuery];
         [activityQuery whereKey:@"toUser" equalTo:sender.toUser];
         [activityQuery whereKey:@"fromUser" equalTo:[PFUser currentUser]];
         
-        PFObject *activity = [activityQuery getFirstObject];
-        
-        [activity delete];
+        [activityQuery getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+           
+            [object deleteEventually];
+            
+        }];
         
         if ([favCount intValue] > 0) {
          
@@ -218,9 +224,10 @@
         }
         
         [favoriteButton setSelected:NO];
-        [favoriteButton setTitle:[formatter stringFromNumber:favCount] forState:UIControlStateNormal];
         
     }
+    
+    [favoriteButton setTitle:[formatter stringFromNumber:favCount] forState:UIControlStateNormal];
     
 }
 
@@ -241,8 +248,6 @@
 
 - (void) didAddComment:(NSString *)comment
 {
-    
-    NSLog(@"%@", commentButton.glamId);
     
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     

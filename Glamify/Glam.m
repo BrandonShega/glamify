@@ -11,7 +11,7 @@
 
 @implementation Glam
 
-@synthesize user, name, category, comments, products, image, glamId, thumbnail;
+@synthesize user, name, category, comments, products, image, glamId, thumbnail, glamImageFile;
 
 - (void)saveGlam
 {

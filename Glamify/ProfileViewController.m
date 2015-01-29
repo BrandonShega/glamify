@@ -15,7 +15,7 @@
 
 @implementation ProfileViewController
 
-@synthesize profileImage, user, profileButton, navBar, likeCounter, followerCounter, followingCounter, commentCounter, glamCounter, followButton, followLabel;
+@synthesize profileImage, user, profileButton, navBar, likeCounter, followerCounter, followingCounter, commentCounter, glamCounter, followButton;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -46,14 +46,12 @@
     if (![user isEqual:[PFUser currentUser]]) {
         
         navBar.hidden = YES;
-        followLabel.hidden = YES;
         followButton.hidden = NO;
         
     
     } else {
         
         navBar.hidden = NO;
-        followLabel.hidden = YES;
         followButton.hidden = YES;
         
     }
@@ -63,11 +61,8 @@
     __block int comments = 0;
     __block int favorites = 0;
     
-    PFFile *imageFile = user[@"image"];
-    NSData *imageData = [imageFile getData];
-    UIImage *image = [UIImage imageWithData:imageData];
-    
-    profileImage.image = image;
+    profileImage.file = user[@"image"];
+    [profileImage loadInBackground];
     
     profileImage.clipsToBounds = YES;
     profileImage.layer.cornerRadius = 200 / 2.0;
@@ -99,8 +94,6 @@
     [activityQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
         if (!error) {
-            
-            NSLog(@"%@", objects);
         
             for (PFObject *obj in objects) {
                 
@@ -129,8 +122,8 @@
                     if ([toUser isEqual:currentUser] && [fromUser isEqual:ourUser]) {
                         
                         //are we following this user?
-                        followButton.hidden = YES;
-                        followLabel.hidden = NO;
+                        [followButton setTitle:@"Unfollow" forState:UIControlStateNormal];
+                        NSLog(@"Unfollow");
                         
                     }
                     
@@ -152,7 +145,7 @@
             commentCounter.text = [NSString stringWithFormat:@"%d", comments];
             
             
-        } else {
+        } else  {
             
             NSLog(@"Error %@ %@", error, [error userInfo]);
             
@@ -198,17 +191,35 @@
 }
 - (IBAction)followUser:(id)sender
 {
+    if ([followButton.titleLabel.text isEqual:@"Follow"]) {
     
-    PFObject *activity = [PFObject objectWithClassName:@"Activity"];
-    
-    [activity setObject:[PFUser currentUser] forKey:@"fromUser"];
-    [activity setObject:user forKey:@"toUser"];
-    [activity setObject:@"follow" forKey:@"type"];
-    
-    [activity save];
-    
-    followButton.hidden = YES;
-    followLabel.hidden = NO;
+        PFObject *activity = [PFObject objectWithClassName:@"Activity"];
+        
+        [activity setObject:[PFUser currentUser] forKey:@"fromUser"];
+        [activity setObject:user forKey:@"toUser"];
+        [activity setObject:@"follow" forKey:@"type"];
+        
+        [activity saveEventually];
+        
+        [followButton setTitle:@"Unfollow" forState:UIControlStateNormal];
+        
+    } else {
+        
+        PFQuery *activityQuery = [PFQuery queryWithClassName:@"Activity"];
+        
+        [activityQuery whereKey:@"type" equalTo:@"follow"];
+        [activityQuery whereKey:@"fromUser" equalTo:[PFUser currentUser]];
+        [activityQuery whereKey:@"toUser" equalTo:user];
+        
+        [activityQuery getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+           
+            [object deleteEventually];
+            
+        }];
+        
+        [followButton setTitle:@"Follow" forState:UIControlStateNormal];
+        
+    }
     
 }
 @end
