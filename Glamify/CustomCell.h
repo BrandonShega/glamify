@@ -12,8 +12,9 @@
 #import "FavoriteButton.h"
 #import <Parse/Parse.h>
 #import "CommentViewController.h"
+#import <ParseUI/ParseUI.h>
 
-@interface CustomCell : UITableViewCell <commentDelegate>
+@interface CustomCell : PFTableViewCell <commentDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *glamName;
 @property (weak, nonatomic) IBOutlet UIImageView *glamImage;

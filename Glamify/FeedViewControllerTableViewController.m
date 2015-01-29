@@ -134,17 +134,11 @@
     
     if (cell != nil) {
         
-        //cell = [[CustomCell alloc] init];
-        
         PFObject *glam = [glamArray objectAtIndex:indexPath.row];
         
         NSString *glamName = [glam objectForKey:@"name"];
         
         PFUser *user = [glam objectForKey:@"user"];
-        
-//        __block NSString *firstName;
-//        __block NSString *lastName;
-//        __block PFFile *posterFile;
         
         [user fetchIfNeeded];
         
@@ -152,33 +146,9 @@
         NSString *lastName = (user[@"lastName"] == nil) ? @"" : user[@"lastName"];
         PFFile *posterFile = user[@"image"];
         
-//        [user fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-//            
-//            firstName = (object[@"firstName"] == nil) ? @"" : object[@"firstName"];
-//            lastName = (object[@"lastName"] == nil) ? @"" : object[@"lastName"];
-//            posterFile = object[@"image"];
-//            
-//        }];
-        
         NSString *posterName = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
         
-        //__block NSData *posterData;
-        
         NSData *posterData = [posterFile getData];
-        
-//        [posterFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-//            
-//            if (!error) {
-//                
-//                posterData = data;
-//                
-//            } else {
-//                
-//                NSLog(@"Error: %@ %@", error, [error userInfo]);
-//                
-//            }
-//            
-//        }];
         
         PFFile *imageFile = [glam objectForKey:@"imageFile"];
         

@@ -265,6 +265,7 @@
 		C59605201A412D5000900245 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596051F1A412D5000900245 /* LoginViewController.m */; };
 		C59605231A41360300900245 /* StyleKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C59605221A41360300900245 /* StyleKit.m */; };
 		C59605261A41361B00900245 /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C59605251A41361B00900245 /* CustomButton.m */; };
+		C59F6F371A79A5EB00D6F9E5 /* FeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C59F6F361A79A5EB00D6F9E5 /* FeedTableViewController.m */; };
 		C5E37AED1A67540E009D96E6 /* person2-512.png in Resources */ = {isa = PBXBuildFile; fileRef = C5E37AEC1A67540E009D96E6 /* person2-512.png */; };
 /* End PBXBuildFile section */
 
@@ -568,6 +569,8 @@
 		C59605221A41360300900245 /* StyleKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyleKit.m; sourceTree = "<group>"; };
 		C59605241A41361B00900245 /* CustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
 		C59605251A41361B00900245 /* CustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomButton.m; sourceTree = "<group>"; };
+		C59F6F351A79A5EB00D6F9E5 /* FeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTableViewController.h; sourceTree = "<group>"; };
+		C59F6F361A79A5EB00D6F9E5 /* FeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewController.m; sourceTree = "<group>"; };
 		C5E37AEC1A67540E009D96E6 /* person2-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "person2-512.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -898,6 +901,8 @@
 				C53849751A68AC1C00A74A5C /* ProductsViewController.m */,
 				C5588DFC1A68BEAB00CF31F8 /* FavoriteButton.h */,
 				C5588DFD1A68BEAB00CF31F8 /* FavoriteButton.m */,
+				C59F6F351A79A5EB00D6F9E5 /* FeedTableViewController.h */,
+				C59F6F361A79A5EB00D6F9E5 /* FeedTableViewController.m */,
 			);
 			path = Glamify;
 			sourceTree = "<group>";
@@ -1285,6 +1290,7 @@
 				C507EA7B1A43D19300376C3F /* DiscoverCell.m in Sources */,
 				C5588DFE1A68BEAB00CF31F8 /* FavoriteButton.m in Sources */,
 				C507EA7E1A43DBB800376C3F /* ProfileViewController.m in Sources */,
+				C59F6F371A79A5EB00D6F9E5 /* FeedTableViewController.m in Sources */,
 				C50A22851A3FCC050086872D /* main.m in Sources */,
 				C50869F11A6208FC00C31885 /* DiscoverDetailViewController.m in Sources */,
 				C507EA841A43E25B00376C3F /* AddProductViewController.m in Sources */,
