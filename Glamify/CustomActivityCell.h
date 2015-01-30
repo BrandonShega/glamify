@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *userImage;
 @property (weak, nonatomic) IBOutlet UILabel *activityStatus;
+@property (weak, nonatomic) IBOutlet UIView *cardView;
 
 - (void)setLabel:(NSString *)label andImage:(UIImage *)image;
 
