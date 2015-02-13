@@ -6,6 +6,10 @@
 //  Copyright (c) 2015 Brandon Shega. All rights reserved.
 //
 
+/*
+ * NEW VERSION OF VIEW CONTROLLER
+ */
+
 #import "FeedTableViewController.h"
 #import "CustomCell.h"
 #import "UIImage+Resize.h"
@@ -26,7 +30,7 @@
 - (id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom the table
+        // Customize the table
         
         // The className to query on
         self.parseClassName = @"Glam";
@@ -60,26 +64,11 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
     
-//    [followQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//        
-//        if (!error) {
-//            activityArray = [objects copy];
-//            
-//            [self loadObjects];
-//                            
-//            
-//        } else {
-//            
-//            NSLog(@"Error: %@ %@", error, [error userInfo]);
-//            
-//        }
-//        
-//    }];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
-    
+    //allow only portrait orientation
     return (toInterfaceOrientation == UIInterfaceOrientationPortrait);
     
 }
@@ -105,10 +94,12 @@
 
 #pragma mark - PFQueryTableViewController
 
+//set up query for the view controller table
 - (PFQuery *)queryForTable
 {
     __block PFQuery *query;
     
+    //if pull to refresh is enabled, only allow when there is a network connection
     if (self.pullToRefreshEnabled) {
         
         query.cachePolicy = kPFCachePolicyNetworkOnly;
@@ -121,8 +112,10 @@
         
     }
     
+    //check if we are passing in a glam ID or getting all glams
     if (glamId) {
         
+        //query to find glam of glam ID being passed in
         query = [PFQuery queryWithClassName:@"Glam"];
         
         [query whereKey:@"objectId" equalTo:glamId];
@@ -130,6 +123,7 @@
         
     } else {
         
+        //query to find all glams of users that we are currently following
         followQuery = [PFQuery queryWithClassName:@"Activity"];
         
         [followQuery whereKey:@"fromUser" equalTo:[PFUser currentUser]];
@@ -147,72 +141,18 @@
     
 }
 
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object
-//{
-//    
-//    
-//    static NSString *cellIdentifier = @"Cell";
-//    
-//    __block NSString *firstName;
-//    __block NSString *lastName;
-//    __block NSString *posterName;
-//    __block PFFile *posterFile;
-//    
-//    CustomCell *cell = (CustomCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-//    
-//    if (cell != nil) {
-//        
-//        NSLog(@"%@", [object objectForKey:@"name"]);
-//        
-//        PFObject *glam = [self.objects objectAtIndex:indexPath.row];
-//        
-//        NSString *glamName = [glam objectForKey:@"name"];
-//        
-//        PFUser *user = [glam objectForKey:@"user"];
-//        
-//        [user fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-//            
-//            firstName = (object[@"firstName"] == nil) ? @"" : object[@"firstName"];
-//            lastName = (object[@"lastName"] == nil) ? @"" : object[@"lastName"];
-//            posterFile = object[@"image"];
-//            
-//            posterName = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
-//            
-//        }];
-//        
-//        Glam *newGlam = [[Glam alloc] init];
-//        
-//        NSString *glamID = [glam objectId];
-//        
-//        newGlam.glamId = glamID;
-//        newGlam.user = user;
-//        
-//        //[cell setLabel:glamName andImage:imageFile andPostersImage:posterFile andPostersName:posterName];
-//        PFFile *imageFile = object[@"imageFile"];
-//        
-//        [cell setLabel:glamName andImage:imageFile andPostersImage:posterFile andPostersName:posterName];
-//        
-//        //setup touch gesture for header view
-//        UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
-//        [cell.headerView addGestureRecognizer:singleFingerTap];
-//        cell.headerView.tag = indexPath.row;
-//        
-//    }
-//    
-//    return cell;
-//    
-//}
-
 - (PFTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object
 {
     
     
     static NSString *cellIdentifier = @"Cell";
     
+    //create custom cell for feed
     CustomCell *cell = (CustomCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if (cell != nil) {
         
+        //set text label of cell
         [[cell glamName] setText:[object objectForKey:@"name"]];
         
         PFUser *user = [object objectForKey:@"user"];
@@ -221,6 +161,7 @@
         NSString *lastName = (user[@"lastName"] == nil) ? @"" : user[@"lastName"];
         NSString *posterName = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
         
+        //set name of poster for cell
         [[cell postersName] setText:posterName];
         
         // Load glam image
@@ -231,7 +172,7 @@
         cell.postersImage.file = user[@"image"];
         [cell.postersImage loadInBackground];
         
-        
+        //create new glam object and assign its properties
         Glam *newGlam = [[Glam alloc] init];
         NSString *glamID = [object objectId];
         newGlam.glamId = glamID;
@@ -249,17 +190,21 @@
     
 }
 
+//action for when we click on the header of a user's glam
 - (void)singleTap:(UIGestureRecognizer *)recognizer
 {
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
+    //create new profile view controller
     ProfileViewController *pvc = [storyboard instantiateViewControllerWithIdentifier:@"profileViewController"];
     
+    //create object for glam that we selected
     PFObject *glam = [self.objects objectAtIndex:recognizer.view.tag];
     
     PFUser *userId = glam[@"user"];
     
+    //fetch user info if needed
     [userId fetchIfNeededInBackground];
     
     NSString *firstName = (userId[@"firstName"] == nil) ? @"" : userId[@"firstName"];
@@ -267,9 +212,11 @@
     
     NSString *name = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
     
+    //set navigation title to user's name
     pvc.navigationItem.title = name;
     pvc.navBar.hidden = YES;
     
+    //set user ID of user that we tapped on
     pvc.user = userId;
     
     [self.navigationController pushViewController:pvc animated:YES];

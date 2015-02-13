@@ -22,6 +22,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    //create new mutable array
     productArray = [[NSMutableArray alloc] init];
     
     [productsTable setDelegate:self];
@@ -36,7 +37,7 @@
 
 - (void)productViewControllerDismissedwithProduct:(Product *)product
 {
-    
+    //add product to array after product view controller is dismissed
     [productArray addObject:product];
     
     [productsTable reloadData];
@@ -73,10 +74,12 @@
     
     NSString *cellIdentifier = @"Cell";
     
+    //create new cell for product table view
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
     if (cell != nil) {
         
+        //set up cell text label
         Product *product = [productArray objectAtIndex:indexPath.row];
         
         cell.textLabel.text = product.name;
@@ -89,18 +92,19 @@
 
 - (IBAction)backButton:(id)sender
 {
-    
+    //dismiss product view controller
     [self.navigationController popViewControllerAnimated:YES];
     
 }
 
 - (IBAction)addProduct:(id)sender
 {
-    
+    //show add product view controller
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     AddProductViewController *apvc = [storyboard instantiateViewControllerWithIdentifier:@"AddProductViewController"];
     [apvc setModalPresentationStyle:UIModalPresentationFullScreen];
     
+    //set delegate
     apvc.delegate = self;
     
     [self presentViewController:apvc animated:YES completion:nil];

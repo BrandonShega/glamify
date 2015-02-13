@@ -32,10 +32,13 @@
     
     [super viewDidAppear:animated];
     
+    //set navigation bar to hidden
     self.navigationController.navigationBarHidden = YES;
     
     PFUser *user = [PFUser currentUser];
     
+    
+    //check if there is currently a user logged in, if so bypass login screen
     if (user) {
         
         [self performSegueWithIdentifier:@"loginSegue" sender:self];
@@ -56,7 +59,7 @@
 
 - (IBAction)unwindSignupViewController:(UIStoryboardSegue *)unwindSegue
 {
-    
+    //when user signs up, pass information back to login view controller to automatically login
     if ([unwindSegue.sourceViewController isKindOfClass:[SignUpViewController class]]) {
         
         SignUpViewController *svc = unwindSegue.sourceViewController;
@@ -74,6 +77,7 @@
     username = [userText text];
     password = [passwordText text];
     
+    //log in user with given credentials
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser *user, NSError *error) {
         if (user) {
             
@@ -83,6 +87,7 @@
             
         } else {
             
+            //present error message to user if there is one
             NSString *errorString = [error userInfo][@"error"];
             
             [[[UIAlertView alloc] initWithTitle:@"Error"
@@ -99,6 +104,7 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     
+    //allow return to move between fields and log user in
     if ([textField isEqual:userText]) {
         
         [passwordText becomeFirstResponder];

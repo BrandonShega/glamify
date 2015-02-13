@@ -25,6 +25,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    //set delegate and datasource for comment table view
     commentTable.delegate = self;
     commentTable.dataSource = self;
     
@@ -47,12 +48,14 @@
     
     [super viewWillAppear:animated];
     
+    //find all glams where the glam id is equal to the one we are editing comments for
     PFQuery *glamQuery = [PFQuery queryWithClassName:@"Glam"];
     
     [glamQuery whereKey:@"objectId" equalTo:glamId];
     
     PFObject *glam = [glamQuery getFirstObject];
 
+    //find all comments that are currently for this glam
     PFQuery *commentQuery = [PFQuery queryWithClassName:@"Activity"];
     
     [commentQuery whereKey:@"type" equalTo:@"comment"];
@@ -64,6 +67,7 @@
             
             comments = objects;
             
+            //reload comment table after they are found
             [commentTable reloadData];
             
         } else {
@@ -105,14 +109,17 @@
     
     NSString *reuseIdentifier = @"Cell";
     
+    //create cell for comments view table
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     if (cell != nil) {
         
+        //create comment object
         PFObject *comment = [comments objectAtIndex:indexPath.row];
         
         PFUser *user = comment[@"fromUser"];
         
+        //fetch user info if needed
         [user fetchIfNeeded];
         
         NSString *firstName = (user[@"firstName"] == nil) ? @"" : user[@"firstName"];
@@ -122,6 +129,7 @@
         
         NSString *commentContent = comment[@"content"];
         
+        //set comment text to cell's label
         cell.textLabel.numberOfLines = 3;
         cell.textLabel.font = [UIFont systemFontOfSize:12.0];
         cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", posterName, commentContent];
@@ -134,6 +142,7 @@
 
 - (IBAction)commentDone:(id)sender
 {
+    //grab comment from text and pass back to feed view controller to save
     commentString = [commentText text];
     
     [self.delegate didAddComment:commentString];

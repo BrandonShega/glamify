@@ -16,10 +16,12 @@
 - (void)saveGlam
 {
     
+    //create glam object to save
     PFObject *glamToSave = [PFObject objectWithClassName:@"Glam"];
     
     NSMutableArray *productArray = [NSMutableArray array];
     
+    //grab products from array and create dictionary for the name and URL
     for (Product *eachProduct in self.products) {
         
         NSMutableDictionary *productDict = [NSMutableDictionary dictionary];
@@ -33,14 +35,15 @@
     
     NSArray *arrayCopy = [productArray copy];
     
+    //add properties of the glam to save
     glamToSave[@"user"] = self.user;
     glamToSave[@"name"] = self.name;
     glamToSave[@"products"] = arrayCopy;
     
+    //create file to upload of glam's image
     PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:self.image];
     
-    
-    
+    //upload file
     [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         
         if (!error) {
@@ -48,6 +51,7 @@
             glamToSave[@"imageFile"] = imageFile;
             //glamToSave.ACL = [PFACL ACLWithUser:self.user];
             
+            //save glam after file upload
             [glamToSave saveInBackground];
             
         } else {

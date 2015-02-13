@@ -24,9 +24,11 @@
 
 - (void)layoutSubviews {
     
+    //set up card view and the user's image view
     userImage.clipsToBounds = YES;
     userImage.layer.cornerRadius = userImage.frame.size.width / 2;
     
+    //create shadow around card
     self.cardView.layer.shadowOffset = CGSizeMake(1, 1);
     self.cardView.layer.shadowColor = [[UIColor blackColor] CGColor];
     self.cardView.layer.shadowRadius = 4.0f;
@@ -38,6 +40,7 @@
 - (void)setLabel:(NSString *)label andImage:(UIImage *)image
 {
     
+    //set actvity status and image
     [activityStatus setText:label];
     [userImage setImage:image];
     

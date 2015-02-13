@@ -44,12 +44,13 @@
 
 - (IBAction)doneProduct:(id)sender
 {
-
+    //create new product object
     Product *newProduct = [[Product alloc] init];
     
     newProduct.name = [productNameText text];
     newProduct.productURL = [productURLText text];
     
+    //pass product back to add a glam view controller
     [self.delegate productViewControllerDismissedwithProduct:newProduct];
     [self dismissViewControllerAnimated:YES completion:nil];
     

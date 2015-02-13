@@ -14,7 +14,7 @@
 
 - (void)setImage:(UIImage *)image
 {
-    
+    //set discover cell image
     discoverImage.image = image;
     
 }
