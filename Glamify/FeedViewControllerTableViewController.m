@@ -6,6 +6,14 @@
 ////  Copyright (c) 2014 Brandon Shega. All rights reserved.
 ////
 //
+
+
+/*
+ * OLD VERSION OF VIEW CONTROLLER, NOT IN USE ANYMORE
+ */
+
+
+
 //#import "FeedViewControllerTableViewController.h"
 //#import "Glam.h"
 //#import "CustomCell.h"

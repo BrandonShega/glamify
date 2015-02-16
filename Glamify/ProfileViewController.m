@@ -37,12 +37,14 @@
 {
     [super viewWillAppear:animated];
     
+    //Check if we are passing a user in to view their profile as opposed to the current user's profile.
     if (!user) {
         
         user = [PFUser currentUser];
         
     }
     
+    //show follow button if we are looking at another user's profile
     if (![user isEqual:[PFUser currentUser]]) {
         
         navBar.hidden = YES;
@@ -61,6 +63,7 @@
     __block int comments = 0;
     __block int favorites = 0;
     
+    //get image from user and crop it to a circle
     profileImage.file = user[@"image"];
     [profileImage loadInBackground];
     
@@ -69,7 +72,7 @@
     
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     
-    //glams
+    //query to find all glams from a particular user
     PFQuery *glamQuery = [PFQuery queryWithClassName:@"Glam"];
     [glamQuery whereKey:@"user" equalTo:user];
     
@@ -77,6 +80,7 @@
         
         if (!error) {
             
+            //get count of user's glams
             NSNumber *glamCount = [NSNumber numberWithUnsignedInteger:[objects count]];
             glamCounter.text = [formatter stringFromNumber:glamCount];
             
@@ -88,13 +92,14 @@
         
     }];
     
-    //activities
+    //query to find all activities
     PFQuery *activityQuery = [PFQuery queryWithClassName:@"Activity"];
     
     [activityQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
         if (!error) {
         
+            //loop through each activity to find out what kind it is and how it relates to the user
             for (PFObject *obj in objects) {
                 
                 NSString *ourUser = [[PFUser currentUser] objectId];
@@ -103,10 +108,12 @@
                 NSString *fromUser = [obj[@"fromUser"] objectId];
                 NSString *type = obj[@"type"];
                 
+                //comments
                 if ([type isEqual:@"comment"] && [fromUser isEqual:currentUser]) {
                     
                     comments++;
-                    
+                
+                //follows
                 } else if ([type  isEqual: @"follow"]) {
                     
                     if ([fromUser isEqual:currentUser]) {
@@ -126,7 +133,8 @@
                         NSLog(@"Unfollow");
                         
                     }
-                    
+                   
+                //favorites
                 } else if ([type isEqual:@"favorite"]) {
                     
                     if ([toUser isEqual:currentUser] && [fromUser isEqual:ourUser]) {
@@ -139,6 +147,7 @@
                 
             }
             
+            //set labels to their respective counts
             likeCounter.text = [NSString stringWithFormat:@"%d", favorites];
             followerCounter.text = [NSString stringWithFormat:@"%d", followers];
             followingCounter.text = [NSString stringWithFormat:@"%d", following];
@@ -174,13 +183,15 @@
 
 - (void)userLoggedOut {
     
+    //user logged out so pop them back to the login screen
     [self.navigationController popToRootViewControllerAnimated:YES];
     
 }
 
 - (IBAction)settingsButton:(id)sender
 {
-    
+ 
+    //open settings view controller
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     SettingsViewController *svc = [storyboard instantiateViewControllerWithIdentifier:@"Settings"];
     
@@ -191,6 +202,7 @@
 }
 - (IBAction)followUser:(id)sender
 {
+    //check if we are following this user, if we are, change the text to unfollow
     if ([followButton.titleLabel.text isEqual:@"Follow"]) {
     
         PFObject *activity = [PFObject objectWithClassName:@"Activity"];

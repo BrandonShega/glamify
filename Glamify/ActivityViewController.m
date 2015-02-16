@@ -32,6 +32,7 @@
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
+    //custom navigation bar setup
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:1.00 green:0.36 blue:0.47 alpha:1.0];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
@@ -43,6 +44,7 @@
     
     [super viewDidAppear:animated];
     
+    //query for all activites that are not from the current user but to the current user
     PFQuery *query = [PFQuery queryWithClassName:@"Activity"];
     [query whereKey:@"fromUser" notEqualTo:[PFUser currentUser]];
     [query whereKey:@"toUser" equalTo:[PFUser currentUser]];
@@ -51,6 +53,7 @@
 
         if (!error) {
 
+            //add objects to mutable array
             activityArray = [NSMutableArray arrayWithArray:objects];
 
             [self.tableView reloadData];
@@ -93,18 +96,22 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    //create custom activity cell
     CustomActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ActivityCell"];
     
     if (cell != NULL) {
         
+        //create new activity object
         PFObject *activity = [activityArray objectAtIndex:indexPath.row];
         
         PFUser *fromUser = [activity objectForKey:@"fromUser"];
         PFUser *toUser = [activity objectForKey:@"toUser"];
         
+        //fetch user info if needed
         [fromUser fetchIfNeeded];
         [toUser fetchIfNeeded];
         
+        //create image of the fromUser
         PFFile *imageFile = fromUser[@"image"];
         NSData *imageData = [imageFile getData];
         
@@ -112,6 +119,7 @@
         
         NSString *message;
         
+        //set activity type
         NSString *type = [activity objectForKey:@"type"];
         
         NSString *firstName = (fromUser[@"firstName"] == nil) ? @"" : fromUser[@"firstName"];
@@ -119,6 +127,7 @@
         
         NSString *name = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
         
+        //determine which text shows up on the activity card based on the type
         if ([type isEqual:@"follow"]) {
             
             message = [NSString stringWithFormat:@"%@ followed you!", name];
@@ -133,6 +142,7 @@
             
         }
         
+        //set up the cell's text and image
         [cell setLabel:message andImage:image];
         
     }

@@ -39,9 +39,10 @@
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
     
-    PFUser *user = [PFUser user];
-    
     __block BOOL successful = NO;
+    
+    //create new user and sign them up in the background
+    PFUser *user = [PFUser user];
     
     user.username = [usernameText text];
     user.password = [verifyPasswordText text];
@@ -54,6 +55,7 @@
             
         } else {
             
+            //alert user if there was an error signing them up
             NSString *errorString = [error userInfo][@"error"];
             
             [[[UIAlertView alloc] initWithTitle:@"Error"
@@ -79,6 +81,7 @@
     password = [passwordText text];
     verifyPassword = [verifyPasswordText text];
     
+    //present error to user if any fields are blank
     if ([username isEqualToString:@""] || [password isEqualToString:@""] || [verifyPassword isEqualToString:@""]) {
         
         [[[UIAlertView alloc] initWithTitle:@"Error"

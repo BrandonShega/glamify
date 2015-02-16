@@ -20,6 +20,7 @@
     
     //[Parse enableLocalDatastore];
     
+    //set up Parse API keys
     [Parse setApplicationId:@"QbW7sYSLHfwRD9IFutlrbbsafiCUcg1Tv3gphk7i" clientKey:@"Y0kbocLpxyBrzE2UbIQvO5GwH701idDNiQ1GB5Ek"];
     
     return YES;

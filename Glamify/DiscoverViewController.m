@@ -32,6 +32,7 @@
     
     [discoverSearch setDelegate:self];
     
+    //set up custom navigation bar
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:1.00 green:0.36 blue:0.47 alpha:1.0];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
@@ -54,19 +55,25 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
+    //this function runs everytime the user types something into the search box
     
+    //we only want to search if there is at least one character in the box
     if ([searchText length] > 1) {
         
+        //remove all current subviews from the main view
         NSArray *viewsToRemove = [photoView subviews];
         
         for (UIView *v in viewsToRemove) {
+            //remove subviews
             [v removeFromSuperview];
         }
         
+        //determine if the user is searching by category or by user
         switch (searchType.selectedSegmentIndex) {
                 
             case 0: {
                 
+                //query to find all glams where the category contains the search text
                 PFQuery *query= [PFQuery queryWithClassName:@"Glam"];
                 
                 [query whereKey:@"category" containsString:searchText];
@@ -75,6 +82,7 @@
                     
                     if (!error) {
                         
+                        //load all glams into the view
                         [self loadImages:objects];
                         
                     } else {
@@ -93,6 +101,7 @@
                 
                 __block NSArray *searchGlams = [[NSArray alloc] init];
                 
+                //query to find all users where the name contains the search text
                 PFQuery *nameQuery = [PFUser query];
                 
                 [nameQuery whereKey:@"name" containsString:searchText];
@@ -101,12 +110,14 @@
                    
                     if (!error) {
                         
+                        //find glams that match these users
                         PFQuery *glamQuery = [PFQuery queryWithClassName:@"Glam"];
                         
                         [glamQuery whereKey:@"user" containedIn:objects];
                         
                         searchGlams = [glamQuery findObjects];
                         
+                        //load all glams into the view
                         [self loadImages:searchGlams];
                         
                     } else {
@@ -130,6 +141,7 @@
         
     } else if ([searchText length] == 0) {
         
+        //if search text is length 0, return all original glams
         [self loadGlams];
         
     }
@@ -141,6 +153,7 @@
 
     [super viewWillAppear:animated];
 
+    //load glams on page before it appears
     [self loadGlams];
 
 }
@@ -152,7 +165,7 @@
 
 - (void)loadGlams
 {
-    
+    //find all glams that don't belong to the user and display them on the page
     PFQuery *query = [PFQuery queryWithClassName:@"Glam"];
     
     //query.limit = 50;
@@ -176,11 +189,12 @@
 
 - (void)imageClicked:(GlamButton *)sender
 {
-    
+    //if user clicks on glam, load it into the view controller
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     FeedViewControllerTableViewController *fvc = [storyboard instantiateViewControllerWithIdentifier:@"feedViewController"];
     
+    //set glam ID and view controller title
     fvc.glamId = sender.glamid;
     fvc.title = @"Detail";
     
@@ -190,7 +204,8 @@
 
 - (void)loadImages:(NSArray *)images
 {
-        
+    
+        //create array to store images
         NSMutableArray *imageArray = [NSMutableArray array];
         
         for (PFObject *object in images) {
@@ -199,42 +214,56 @@
 
             NSData *data = [imageFile getData];
             
+            //create new glam object
             Glam *glam = [[Glam alloc] init];
             
+            //set image data and ID
             glam.image = data;
             glam.glamId = [object objectId];
             
+            //add to image array
             [imageArray addObject:glam];
             
         }
         
 
         for (int i = 0; i < [imageArray count]; i++) {
-
+            
+            //create glam object
             Glam *eachGlam = [imageArray objectAtIndex:i];
-
+            
+            //create custom glam button
             GlamButton *glamButton = [GlamButton buttonWithType:UIButtonTypeCustom];
 
             UIImage *image = [UIImage imageWithData:eachGlam.image];
 
+            //set image for glam button
             [glamButton setImage:image forState:UIControlStateNormal];
 
+            //set glam id for glam button so we know which one the user clicks on to load that glam
             glamButton.glamid = eachGlam.glamId;
 
+            //set frame of each glam button
             glamButton.frame = CGRectMake(IMAGE_WIDTH * (i % NUMBER_OF_COLUMNS) + PADDING * (i % NUMBER_OF_COLUMNS) + PADDING, IMAGE_HEIGHT * (i / NUMBER_OF_COLUMNS) + PADDING * (i / NUMBER_OF_COLUMNS) + PADDING, IMAGE_WIDTH, IMAGE_HEIGHT);
 
+            //scale picture to fit
             glamButton.imageView.contentMode = UIViewContentModeScaleAspectFill;
 
+            //add trigger for when user clicks on a glam
             [glamButton addTarget:self action:@selector(imageClicked:) forControlEvents:UIControlEventTouchUpInside];
 
+            //add glam button to main view
             [photoView addSubview:glamButton];
 
         }
-
+    
+        //calculate number of rows
         int rows = (int)imageArray.count / NUMBER_OF_COLUMNS;
 
+        //calculate height of main view
         int height = IMAGE_HEIGHT * rows + PADDING * rows;
 
+        //set size of main view
         photoView.contentSize = CGSizeMake(self.view.frame.size.width, height);
             
 }
